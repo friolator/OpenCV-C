@@ -1,5 +1,5 @@
 # OpenCV-C
-OpenCV-C is a Plain C API for Open CV. 
+OpenCV-C is a Plain C API for Open CV 4.5+. 
 
 The purpose of this API is to allow programming environments such as Xojo the ability to use modern
 versions of OpenCV. Previously the only way to do this was with OpenCVX, which tied into the now-deprecated
