@@ -1,0 +1,12 @@
+# mac
+.DS_Store
+
+# xcode
+Build/*
+DerivedData/
+xcuserdata/
+
+# visual studio
+.vs/
+x64/
+x86/
