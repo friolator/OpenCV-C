@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC42B081264DC96200E6FCC7 /* Demo.c in Sources */ = {isa = PBXBuildFile; fileRef = EC42B080264DC96200E6FCC7 /* Demo.c */; };
 		ECA568D0264C6AD900C36944 /* CVCCore.h in Headers */ = {isa = PBXBuildFile; fileRef = ECA568CF264C6AD900C36944 /* CVCCore.h */; };
 		ECA568D3264D5E0000C36944 /* CVCCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA568D2264D5E0000C36944 /* CVCCore.cpp */; };
 		ECA568D7264D8D0F00C36944 /* CVCTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA568D6264D8D0F00C36944 /* CVCTypes.cpp */; };
@@ -15,7 +16,6 @@
 		ECB633E5264975860007047C /* OpenCVC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECB633E4264975860007047C /* OpenCVC.cpp */; };
 		ECB633F2264978370007047C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB633F1264978370007047C /* Foundation.framework */; };
 		ECB633F426497B9C0007047C /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB633F326497B9C0007047C /* OpenCL.framework */; };
-		ECB6340726497C470007047C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = ECB6340626497C470007047C /* main.c */; };
 		ECB634102649CDA90007047C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB6340F2649CDA90007047C /* Accelerate.framework */; };
 		ECB634122649D0740007047C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB634112649D0740007047C /* Cocoa.framework */; };
 		ECF15F18264ACC1A00368718 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB633EE264976940007047C /* opencv2.framework */; };
@@ -44,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EC42B080264DC96200E6FCC7 /* Demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Demo.c; sourceTree = "<group>"; };
 		ECA568CF264C6AD900C36944 /* CVCCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCCore.h; sourceTree = "<group>"; };
 		ECA568D1264C778B00C36944 /* CVCBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCBase.h; sourceTree = "<group>"; };
 		ECA568D2264D5E0000C36944 /* CVCCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVCCore.cpp; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		ECB633F1264978370007047C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ECB633F326497B9C0007047C /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		ECB6340426497C470007047C /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECB6340626497C470007047C /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		ECB6340F2649CDA90007047C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		ECB634112649D0740007047C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -143,7 +143,7 @@
 		ECB6340526497C470007047C /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				ECB6340626497C470007047C /* main.c */,
+				EC42B080264DC96200E6FCC7 /* Demo.c */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -249,7 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECB6340726497C470007047C /* main.c in Sources */,
+				EC42B081264DC96200E6FCC7 /* Demo.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

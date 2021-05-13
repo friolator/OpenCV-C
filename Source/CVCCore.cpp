@@ -56,7 +56,7 @@ void CVCdivide(double scale, CVCMat src2, CVCMat dst, int dtype)
 */
 void CVCscaleAdd(CVCMat src1, double alpha, CVCMat src2, CVCMat dst)
 {
-	cv:scaleAdd(CVCMatRef(src1), alpha, CVCMatRef(src2), CVCMatRef(dst));
+	cv::scaleAdd(CVCMatRef(src1), alpha, CVCMatRef(src2), CVCMatRef(dst));
 }
 
 void CVCaddWeighted(CVCMat src1, double alpha, CVCMat src2, double beta, double gamma, CVCMat dst, int dtype)
