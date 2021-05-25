@@ -15,13 +15,8 @@
 #include "CVCTypes.h"
 #include "CVCBase.h"
 #include "CVCCore.h"
-
-// image processing functions
-CVC_EXPORT void CVCCanny(CVCMat inputImage, CVCMat outputEdges, double threshold1, double threshold2);
-CVC_EXPORT void CVCcvtColor(CVCMat inputImage, CVCMat outputImage);
-CVC_EXPORT void CVCGaussianBlur(CVCMat inputImage, CVCMat outputImage, double sigmaX, double sigmaY);
-CVC_EXPORT CVCMat CVCimread(const char *filePath);
-CVC_EXPORT void CVCresize(CVCMat inputImage, CVCMat outputImage, int width, int height);
+#include "CVCImgCodecs.h"
+#include "CVCImgProc.h"
 
 // high gui functions
 CVC_EXPORT void CVCdestroyAllWindows(void);

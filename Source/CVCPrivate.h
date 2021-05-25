@@ -9,11 +9,11 @@
 #ifndef CVCPRIVATE_H
 #define CVCPRIVATE_H
 
-
 #define CVCMatPtr(value)		((cv::Mat*)value)
 #define CVCMatRef(value)		(*(cv::Mat*)value)
 #define ConstCVCMatPtr(value)	((const cv::Mat*)value)
 #define ConstCVCMatRef(value)	(*(const cv::Mat*)value)
 
+#define CVCSizeParam(value)		cv::Size(value.width, value.height)
 
 #endif /* CVCPRIVATE_H */

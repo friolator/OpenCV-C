@@ -13,7 +13,7 @@ int main(int argc, const char * argv[])
 {
 	printf("Running...\n");
 
-	CVCMat image = CVCimread("Test-Pattern.tif");
+	CVCMat image = CVCimread("Test-Pattern.tif", CVC_IMREAD_COLOR);
 	if (image != NULL) {
 		printf("Image loaded.\n");
 		CVCMatFree(image);
@@ -25,21 +25,23 @@ int main(int argc, const char * argv[])
 	// resize the image
 	double scale = 0.125;
 	CVCMat smaller = CVCMatCreate();
-	int scaledWidth = (int)((double)CVCMatWidth(image) * scale);
-	int scaledHeight = (int)((double)CVCMatHeight(image) * scale);
-	CVCresize(image, smaller, scaledWidth, scaledHeight); // cv::INTER_AREA);
+	CVCSize scaledSize;
+	scaledSize.width = (int)((double)CVCMatWidth(image) * scale);
+	scaledSize.height = (int)((double)CVCMatHeight(image) * scale);
+	CVCresize(image, smaller, scaledSize, 0.0, 0.0, CVC_INTER_AREA);
 
 	// convert to grayscale
 	CVCMat gray = CVCMatCreate();
-	CVCcvtColor(smaller, gray); // cv::COLOR_RGB2GRAY);
+	CVCcvtColor(smaller, gray, CVC_COLOR_RGB2GRAY, 0);
 
 	// apply gaussian blur
 	CVCMat blur = CVCMatCreate();
-	CVCGaussianBlur(gray, blur, 3.0, 3.0);
+	CVCSize blurSize = { 0.0, 0.0 };
+	CVCGaussianBlur(gray, blur, blurSize, 3.0, 3.0, CVC_BORDER_DEFAULT);
 
 	// apply edge detection
 	CVCMat canny = CVCMatCreate();
-	CVCCanny(blur, canny, 125.0, 175.0);
+	CVCCanny(blur, canny, 125.0, 175.0, 3, false);
 
 	// show the image
 	CVCimshow("canny", blur);

@@ -30,4 +30,20 @@ CVC_EXPORT void CVCMatFree(CVCMat mat);
 CVC_EXPORT int CVCMatHeight(CVCMat mat);
 CVC_EXPORT int CVCMatWidth(CVCMat mat);
 
+typedef struct CVCPoint {
+	int x, y;
+} CVCPoint;
+
+typedef struct CVCPoint2f {
+	float x, y;
+} CVCPoint2f;
+
+typedef struct CVCScalar {
+	double v0, v1, v2, v3;
+} CVCScalar;
+
+typedef struct CVCSize {
+	int width, height;
+} CVCSize;
+
 #endif /* CVCTYPES_H */

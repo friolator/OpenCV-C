@@ -149,10 +149,10 @@ CVC_EXPORT void CVCextractChannel(CVCMat src, CVCMat dst, int coi);
 /** @brief Flips a 2D array around vertical, horizontal, or both axes. */
 CVC_EXPORT void CVCflip(CVCMat src, CVCMat dst, int flipCode);
 
-enum RotateFlags {
-	ROTATE_90_CLOCKWISE = 0,
-	ROTATE_180 = 1,
-	ROTATE_90_COUNTERCLOCKWISE = 2,
+enum CVCRotateFlags {
+	CVC_ROTATE_90_CLOCKWISE = 0,
+	CVC_ROTATE_180 = 1,
+	CVC_ROTATE_90_COUNTERCLOCKWISE = 2,
 };
 
 /** @brief Rotates a 2D array in multiples of 90 degrees. */

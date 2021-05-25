@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		EC42B081264DC96200E6FCC7 /* Demo.c in Sources */ = {isa = PBXBuildFile; fileRef = EC42B080264DC96200E6FCC7 /* Demo.c */; };
+		EC67AC3A265C10C100D78360 /* CVCImgCodecs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67AC37265C10B300D78360 /* CVCImgCodecs.cpp */; };
+		EC67AC3D265C1C4300D78360 /* CVCImgProc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67AC3B265C1C4300D78360 /* CVCImgProc.cpp */; };
+		EC67AC3E265C1C4300D78360 /* CVCImgProc.h in Headers */ = {isa = PBXBuildFile; fileRef = EC67AC3C265C1C4300D78360 /* CVCImgProc.h */; };
 		ECA568D0264C6AD900C36944 /* CVCCore.h in Headers */ = {isa = PBXBuildFile; fileRef = ECA568CF264C6AD900C36944 /* CVCCore.h */; };
 		ECA568D3264D5E0000C36944 /* CVCCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA568D2264D5E0000C36944 /* CVCCore.cpp */; };
 		ECA568D7264D8D0F00C36944 /* CVCTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA568D6264D8D0F00C36944 /* CVCTypes.cpp */; };
@@ -45,6 +48,11 @@
 
 /* Begin PBXFileReference section */
 		EC42B080264DC96200E6FCC7 /* Demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Demo.c; sourceTree = "<group>"; };
+		EC67AC37265C10B300D78360 /* CVCImgCodecs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVCImgCodecs.cpp; sourceTree = "<group>"; };
+		EC67AC38265C10B300D78360 /* CVCImgCodecs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCImgCodecs.h; sourceTree = "<group>"; };
+		EC67AC3B265C1C4300D78360 /* CVCImgProc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVCImgProc.cpp; sourceTree = "<group>"; };
+		EC67AC3C265C1C4300D78360 /* CVCImgProc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCImgProc.h; sourceTree = "<group>"; };
+		EC67AC3F265C781400D78360 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ECA568CF264C6AD900C36944 /* CVCCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCCore.h; sourceTree = "<group>"; };
 		ECA568D1264C778B00C36944 /* CVCBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCBase.h; sourceTree = "<group>"; };
 		ECA568D2264D5E0000C36944 /* CVCCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVCCore.cpp; sourceTree = "<group>"; };
@@ -89,6 +97,7 @@
 		ECB633D4264975860007047C = {
 			isa = PBXGroup;
 			children = (
+				EC67AC3F265C781400D78360 /* README.md */,
 				ECB633EB264976520007047C /* Source */,
 				ECB6340526497C470007047C /* Demo */,
 				ECB633EC2649766D0007047C /* macOS */,
@@ -114,6 +123,10 @@
 				ECA568D1264C778B00C36944 /* CVCBase.h */,
 				ECA568D2264D5E0000C36944 /* CVCCore.cpp */,
 				ECA568CF264C6AD900C36944 /* CVCCore.h */,
+				EC67AC37265C10B300D78360 /* CVCImgCodecs.cpp */,
+				EC67AC38265C10B300D78360 /* CVCImgCodecs.h */,
+				EC67AC3B265C1C4300D78360 /* CVCImgProc.cpp */,
+				EC67AC3C265C1C4300D78360 /* CVCImgProc.h */,
 				ECA568D4264D5F7E00C36944 /* CVCPrivate.h */,
 				ECA568D6264D8D0F00C36944 /* CVCTypes.cpp */,
 				ECA568D5264D8C2000C36944 /* CVCTypes.h */,
@@ -157,6 +170,7 @@
 			files = (
 				ECA568D0264C6AD900C36944 /* CVCCore.h in Headers */,
 				ECB633E1264975860007047C /* OpenCVC.h in Headers */,
+				EC67AC3E265C1C4300D78360 /* CVCImgProc.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +255,8 @@
 			files = (
 				ECB633E5264975860007047C /* OpenCVC.cpp in Sources */,
 				ECA568D3264D5E0000C36944 /* CVCCore.cpp in Sources */,
+				EC67AC3A265C10C100D78360 /* CVCImgCodecs.cpp in Sources */,
+				EC67AC3D265C1C4300D78360 /* CVCImgProc.cpp in Sources */,
 				ECA568D7264D8D0F00C36944 /* CVCTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

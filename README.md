@@ -7,3 +7,9 @@ OpenCV C-API, and was limited to 32bit.
 
 The initial release was commissioned by Gamma Ray Digital, Inc. (http://www.gammaraydigital.com) and 
 has been released under the Apache 2.0 license. 
+
+## How to Use:
+
+### Memory Management:
+
+* Some structures (ie. CVCMat) must be manualy allocated and deallocated with their create/free functions. (ie. CVCMatCreate, CVCMatFree). If a function *returns* a manually allocated structure, the return value must be manually deallocated.
