@@ -14,6 +14,9 @@
 #define ConstCVCMatPtr(value)	((const cv::Mat*)value)
 #define ConstCVCMatRef(value)	(*(const cv::Mat*)value)
 
+#define CVCPointParam(value)	cv::Point(value.x, value.y)
+#define CVCPoint2fParam(value)	cv::Point2f(value.x, value.y)
+#define CVCScalarParam(value)	cv::Scalar(value.v0, value.v1, value.v2, value.v3)
 #define CVCSizeParam(value)		cv::Size(value.width, value.height)
 
 #endif /* CVCPRIVATE_H */

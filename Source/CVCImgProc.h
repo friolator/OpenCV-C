@@ -1125,19 +1125,19 @@ CVC_EXPORT void CVCellipse(CVCMat img, CVCPoint center, CVCSize axes, double ang
 CVC_EXPORT void CVCdrawMarker(CVCMat img, CVCPoint position, CVCScalar color, int markerType, int markerSize, int thickness, int line_type);
 
 /** @overload */
-CVC_EXPORT void CVCfillConvexPoly(CVCMat img, const CVCPoint* pts, int npts, CVCScalar color, int lineType, int shift);
+//CVC_EXPORT void CVCfillConvexPoly(CVCMat img, const CVCPoint* pts, int npts, CVCScalar color, int lineType, int shift);
 
 /** @brief Fills a convex polygon. */
 //CVC_EXPORT void CVCfillConvexPoly(CVCMat img, CVCMat points, CVCScalar color, int lineType, int shift);
 
 /** @overload */
-CVC_EXPORT void CVCfillPoly(CVCMat img, const CVCPoint** pts, const int* npts, int ncontours, CVCScalar color, int lineType, int shift, CVCPoint offset);
+//CVC_EXPORT void CVCfillPoly(CVCMat img, const CVCPoint** pts, const int* npts, int ncontours, CVCScalar color, int lineType, int shift, CVCPoint offset);
 
 /** @brief Fills the area bounded by one or more polygons. */
 //CVC_EXPORT void CVCfillPoly(CVCMat img, InputArrayOfArrays pts, CVCScalar color, int lineType, int shift, CVCPoint offset);
 
 /** @overload */
-CVC_EXPORT void CVCpolylines(CVCMat img, const CVCPoint* const* pts, const int* npts, int ncontours, bool isClosed, CVCScalar color, int thickness, int lineType, int shift);
+//CVC_EXPORT void CVCpolylines(CVCMat img, const CVCPoint* const* pts, const int* npts, int ncontours, bool isClosed, CVCScalar color, int thickness, int lineType, int shift);
 
 /** @brief Draws several polygonal curves. */
 //CVC_EXPORT void CVCpolylines(CVCMat img, InputArrayOfArrays pts, bool isClosed, CVCScalar color, int thickness, int lineType, int shift);

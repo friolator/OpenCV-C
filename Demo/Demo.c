@@ -36,7 +36,7 @@ int main(int argc, const char * argv[])
 
 	// apply gaussian blur
 	CVCMat blur = CVCMatCreate();
-	CVCSize blurSize = { 0.0, 0.0 };
+	CVCSize blurSize = { 0, 0 };
 	CVCGaussianBlur(gray, blur, blurSize, 3.0, 3.0, CVC_BORDER_DEFAULT);
 
 	// apply edge detection
