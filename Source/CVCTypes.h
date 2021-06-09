@@ -42,8 +42,29 @@ typedef struct CVCScalar {
 	double v0, v1, v2, v3;
 } CVCScalar;
 
-typedef struct CVCSize {
-	int width, height;
-} CVCSize;
+typedef void* CVCSize;
+
+CVC_EXPORT CVCSize CVCSizeCreate(int width, int height);
+CVC_EXPORT void CVCSizeFree(CVCSize size);
+CVC_EXPORT double CVCSizeAspectRatio(CVCSize size);
+CVC_EXPORT int CVCSizeArea(CVCSize size);
+CVC_EXPORT bool CVCSizeEmpty(CVCSize size);
+
+typedef struct CVCRect {
+	int width, height, x, y;
+} CVCRect;
+
+// TermCriteria
+typedef void* CVCTermCriteria;
+
+enum CVCTermCriteriaType {
+   COUNT=1,
+   MAX_ITER=COUNT,
+   EPS=2
+};
+
+CVC_EXPORT CVCTermCriteria CVCTermCriteriaCreate(int type, int maxCount, double epsilon);
+CVC_EXPORT void CVCTermCriteriaFree(CVCTermCriteria);
+CVC_EXPORT bool CVCTermCriteriaIsValid(CVCTermCriteria termCriteria);
 
 #endif /* CVCTYPES_H */

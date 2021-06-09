@@ -27,7 +27,7 @@ void CVCgetDerivKernels(CVCMat kx, CVCMat ky, int dx, int dy, int ksize, bool no
 CVCMat CVCgetGaborKernel(CVCSize ksize, double sigma, double theta, double lambd, double gamma, double psi, int ktype)
 {
 	CVCMat mat = CVCMatCreate();
-	CVCMatRef(mat) = cv::getGaborKernel(CVCSizeParam(ksize), sigma, theta, lambd, gamma, psi, ktype);
+	CVCMatRef(mat) = cv::getGaborKernel(CVCSizeRef(ksize), sigma, theta, lambd, gamma, psi, ktype);
 	return mat;
 }
 
@@ -39,7 +39,7 @@ CVCScalar CVCmorphologyDefaultBorderValue(void)
 CVCMat CVCgetStructuringElement(int shape, CVCSize ksize, CVCPoint anchor)
 {
 	CVCMat mat = CVCMatCreate();
-	CVCMatRef(mat) = cv::getStructuringElement(shape, CVCSizeParam(ksize), CVCPointParam(anchor));
+	CVCMatRef(mat) = cv::getStructuringElement(shape, CVCSizeRef(ksize), CVCPointParam(anchor));
 	return mat;
 }
 
@@ -50,7 +50,7 @@ void CVCmedianBlur(CVCMat src, CVCMat dst, int ksize)
 
 void CVCGaussianBlur(CVCMat src, CVCMat dst, CVCSize ksize, double sigmaX, double sigmaY, int borderType)
 {
-	cv::GaussianBlur(ConstCVCMatRef(src), CVCMatRef(dst), CVCSizeParam(ksize), sigmaX, sigmaY, borderType);
+	cv::GaussianBlur(ConstCVCMatRef(src), CVCMatRef(dst), CVCSizeRef(ksize), sigmaX, sigmaY, borderType);
 }
 
 void CVCbilateralFilter(CVCMat src, CVCMat dst, int d, double sigmaColor, double sigmaSpace, int borderType)
@@ -60,17 +60,17 @@ void CVCbilateralFilter(CVCMat src, CVCMat dst, int d, double sigmaColor, double
 
 void CVCboxFilter(CVCMat src, CVCMat dst, int ddepth, CVCSize ksize, CVCPoint anchor, bool normalize, int borderType)
 {
-	cv::boxFilter(CVCMatRef(src), CVCMatRef(dst), ddepth, CVCSizeParam(ksize), CVCPointParam(anchor), normalize, borderType);
+	cv::boxFilter(CVCMatRef(src), CVCMatRef(dst), ddepth, CVCSizeRef(ksize), CVCPointParam(anchor), normalize, borderType);
 }
 
 void CVCsqrBoxFilter(CVCMat src, CVCMat dst, int ddepth, CVCSize ksize, CVCPoint anchor, bool normalize, int borderType)
 {
-	cv::sqrBoxFilter(CVCMatRef(src), CVCMatRef(dst), ddepth, CVCSizeParam(ksize), CVCPointParam(anchor), normalize, borderType);
+	cv::sqrBoxFilter(CVCMatRef(src), CVCMatRef(dst), ddepth, CVCSizeRef(ksize), CVCPointParam(anchor), normalize, borderType);
 }
 
 void CVCblur(CVCMat src, CVCMat dst, CVCSize ksize, CVCPoint anchor, int borderType)
 {
-	cv::blur(CVCMatRef(src), CVCMatRef(dst), CVCSizeParam(ksize), CVCPointParam(anchor), borderType);
+	cv::blur(CVCMatRef(src), CVCMatRef(dst), CVCSizeRef(ksize), CVCPointParam(anchor), borderType);
 }
 
 void CVCfilter2D(CVCMat src, CVCMat dst, int ddepth, CVCMat kernel, CVCPoint anchor, double delta, int borderType)
@@ -130,7 +130,10 @@ void CVCpreCornerDetect(CVCMat src, CVCMat dst, int ksize, int borderType)
 	cv::preCornerDetect(CVCMatRef(src), CVCMatRef(dst), ksize, borderType);
 }
 
-//void CVCcornerSubPix(CVCMat image, CVCMat corners, CVCSize winSize, CVCSize zeroZone, TermCriteria criteria)
+void CVCcornerSubPix(CVCMat image, CVCMat corners, CVCSize winSize, CVCSize zeroZone, CVCTermCriteria criteria)
+{
+   cv::cornerSubPix(CVCMatRef(image), CVCMatRef(corners), CVCSizeRef(winSize), CVCSizeRef(zeroZone), CVCTermCriteriaRef(criteria));
+}
 
 void CVCgoodFeaturesToTrack(CVCMat image, CVCMat corners, int maxCorners, double qualityLevel, double minDistance, CVCMat mask, int blockSize, bool useHarrisDetector, double k)
 {
@@ -183,17 +186,17 @@ void CVCmorphologyEx(CVCMat src, CVCMat dst, int op, CVCMat kernel, CVCPoint anc
 
 void CVCresize(CVCMat src, CVCMat dst, CVCSize dsize, double fx, double fy, int interpolation)
 {
-	cv::resize(ConstCVCMatRef(src), CVCMatRef(dst), CVCSizeParam(dsize), fx, fy, interpolation);
+	cv::resize(ConstCVCMatRef(src), CVCMatRef(dst), CVCSizeRef(dsize), fx, fy, interpolation);
 }
 
 void CVCwarpAffine(CVCMat src, CVCMat dst, CVCMat M, CVCSize dsize, int flags, int borderMode, CVCScalar borderValue)
 {
-	cv::warpAffine(CVCMatRef(src), CVCMatRef(dst), CVCMatRef(M), CVCSizeParam(dsize), flags, borderMode, CVCScalarParam(borderValue));
+	cv::warpAffine(CVCMatRef(src), CVCMatRef(dst), CVCMatRef(M), CVCSizeRef(dsize), flags, borderMode, CVCScalarParam(borderValue));
 }
 
 void CVCwarpPerspective(CVCMat src, CVCMat dst, CVCMat M, CVCSize dsize, int flags, int borderMode, CVCScalar borderValue)
 {
-	cv::warpPerspective(CVCMatRef(src), CVCMatRef(dst), CVCMatRef(M), CVCSizeParam(dsize), flags, borderMode, CVCScalarParam(borderValue));
+	cv::warpPerspective(CVCMatRef(src), CVCMatRef(dst), CVCMatRef(M), CVCSizeRef(dsize), flags, borderMode, CVCScalarParam(borderValue));
 }
 
 void CVCremap(CVCMat src, CVCMat dst, CVCMat map1, CVCMat map2, int interpolation, int borderMode, CVCScalar borderValue)
@@ -240,7 +243,7 @@ CVCMat CVCgetAffineTransform(CVCMat src, CVCMat dst)
 
 void CVCgetRectSubPix(CVCMat image, CVCSize patchSize, CVCPoint2f center, CVCMat patch, int patchType)
 {
-	cv::getRectSubPix(CVCMatRef(image), CVCSizeParam(patchSize), CVCPoint2fParam(center), CVCMatRef(patch), patchType);
+	cv::getRectSubPix(CVCMatRef(image), CVCSizeRef(patchSize), CVCPoint2fParam(center), CVCMatRef(patch), patchType);
 }
 
 void CVClogPolar(CVCMat src, CVCMat dst, CVCPoint2f center, double M, int flags)
@@ -255,7 +258,7 @@ void CVClinearPolar(CVCMat src, CVCMat dst, CVCPoint2f center, double maxRadius,
 
 void CVCwarpPolar(CVCMat src, CVCMat dst, CVCSize dsize, CVCPoint2f center, double maxRadius, int flags)
 {
-	cv::warpPolar(CVCMatRef(src), CVCMatRef(dst), CVCSizeParam(dsize), CVCPoint2fParam(center), maxRadius, flags);
+	cv::warpPolar(CVCMatRef(src), CVCMatRef(dst), CVCSizeRef(dsize), CVCPoint2fParam(center), maxRadius, flags);
 }
 
 void CVCintegral(CVCMat src, CVCMat sum, int sdepth)
@@ -304,7 +307,7 @@ Point2d CVCphaseCorrelate(CVCMat src1, CVCMat src2, CVCMat window, double* respo
 */
 void CVCcreateHanningWindow(CVCMat dst, CVCSize winSize, int type)
 {
-	cv::createHanningWindow(CVCMatRef(dst), CVCSizeParam(winSize), type);
+	cv::createHanningWindow(CVCMatRef(dst), CVCSizeRef(winSize), type);
 }
 
 double CVCthreshold(CVCMat src, CVCMat dst, double thresh, double maxval, int type)
@@ -319,12 +322,12 @@ void CVCadaptiveThreshold(CVCMat src, CVCMat dst, double maxValue, int adaptiveM
 
 void CVCpyrDown(CVCMat src, CVCMat dst, CVCSize dstsize, int borderType)
 {
-	cv::pyrDown(CVCMatRef(src), CVCMatRef(dst), CVCSizeParam(dstsize), borderType);
+	cv::pyrDown(CVCMatRef(src), CVCMatRef(dst), CVCSizeRef(dstsize), borderType);
 }
 
 void CVCpyrUp(CVCMat src, CVCMat dst, CVCSize dstsize, int borderType)
 {
-	cv::pyrUp(CVCMatRef(src), CVCMatRef(dst), CVCSizeParam(dstsize), borderType);
+	cv::pyrUp(CVCMatRef(src), CVCMatRef(dst), CVCSizeRef(dstsize), borderType);
 }
 
 //void CVCbuildPyramid(CVCMat src, OutputArrayOfArrays dst, int maxlevel, int borderType)
@@ -547,7 +550,9 @@ void CVCrectangle(CVCMat img, CVCPoint pt1, CVCPoint pt2, CVCScalar color, int t
 	cv::rectangle(CVCMatRef(img), CVCPointParam(pt1), CVCPointParam(pt2), CVCScalarParam(color), thickness, lineType, shift);
 }
 
-//void CVCrectangle(CVCMat img, Rect rec, CVCScalar color, int thickness, int lineType, int shift)
+void CVCrectangle2(CVCMat img, CVCRect rect, CVCScalar color, int thickness, int lineType, int shift) {
+	cv::rectangle(CVCMatRef(img), CVCRectParam(rect), CVCScalarParam(color), thickness, lineType, shift);
+}
 
 void CVCcircle(CVCMat img, CVCPoint center, int radius, CVCScalar color, int thickness, int lineType, int shift)
 {
@@ -556,7 +561,7 @@ void CVCcircle(CVCMat img, CVCPoint center, int radius, CVCScalar color, int thi
 
 void CVCellipse(CVCMat img, CVCPoint center, CVCSize axes, double angle, double startAngle, double endAngle, CVCScalar color, int thickness, int lineType, int shift)
 {
-	cv::ellipse(CVCMatRef(img), CVCPointParam(center), CVCSizeParam(axes), angle, startAngle, endAngle, CVCScalarParam(color), thickness, lineType, shift);
+	cv::ellipse(CVCMatRef(img), CVCPointParam(center), CVCSizeRef(axes), angle, startAngle, endAngle, CVCScalarParam(color), thickness, lineType, shift);
 }
 
 //void CVCellipse(CVCMat img, const RotatedRect& box, CVCScalar color, int thickness, int lineType)
@@ -593,7 +598,7 @@ bool CVCclipLine(CVCSize imgSize, CVCPoint* pt1, CVCPoint* pt2)
 {
 	cv::Point point1 = { pt1->x, pt1->y };
 	cv::Point point2 = { pt2->x, pt2->y };
-	bool result = cv::clipLine(CVCSizeParam(imgSize), point1, point2);
+	bool result = cv::clipLine(CVCSizeRef(imgSize), point1, point2);
 	pt1->x = point1.x; pt1->y = point1.y;
 	pt2->x = point2.x; pt2->y = point2.y;
 	return result;
@@ -615,7 +620,7 @@ void CVCputText(CVCMat img, const char* text, CVCPoint org, int fontFace, double
 CVCSize CVCgetTextSize(const char* text, int fontFace, double fontScale, int thickness, int* baseLine)
 {
 	cv::Size size = cv::getTextSize(text, fontFace, fontScale, thickness, baseLine);
-	return { size.width, size.height };
+	return CVCSizeCreate(size.width, size.height);
 }
 
 double CVCgetFontScaleFromHeight(int fontFace, int pixelHeight, int thickness)

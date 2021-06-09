@@ -816,7 +816,7 @@ CVC_EXPORT void CVCcornerEigenValsAndVecs(CVCMat src, CVCMat dst, int blockSize,
 CVC_EXPORT void CVCpreCornerDetect(CVCMat src, CVCMat dst, int ksize, int borderType);
 
 /** @brief Refines the corner locations. */
-//CVC_EXPORT void CVCcornerSubPix(CVCMat image, CVCMat corners, CVCSize winSize, CVCSize zeroZone, TermCriteria criteria);
+CVC_EXPORT void CVCcornerSubPix(CVCMat image, CVCMat corners, CVCSize winSize, CVCSize zeroZone, CVCTermCriteria criteria);
 
 /** @brief Determines strong corners on an image. */
 CVC_EXPORT void CVCgoodFeaturesToTrack(CVCMat image, CVCMat corners, int maxCorners, double qualityLevel, double minDistance, CVCMat mask, int blockSize, bool useHarrisDetector, double k);
@@ -1110,7 +1110,7 @@ CVC_EXPORT void CVCarrowedLine(CVCMat img, CVCPoint pt1, CVCPoint pt2, CVCScalar
 CVC_EXPORT void CVCrectangle(CVCMat img, CVCPoint pt1, CVCPoint pt2, CVCScalar color, int thickness, int lineType, int shift);
 
 /** @overload */
-//CVC_EXPORT void CVCrectangle(CVCMat img, Rect rec, CVCScalar color, int thickness, int lineType, int shift);
+CVC_EXPORT void CVCrectangle2(CVCMat img, CVCRect rec, CVCScalar color, int thickness, int lineType, int shift);
 
 /** @brief Draws a circle. */
 CVC_EXPORT void CVCcircle(CVCMat img, CVCPoint center, int radius, CVCScalar color, int thickness, int lineType, int shift);

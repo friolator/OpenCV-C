@@ -25,9 +25,9 @@ int main(int argc, const char * argv[])
 	// resize the image
 	double scale = 0.125;
 	CVCMat smaller = CVCMatCreate();
-	CVCSize scaledSize;
-	scaledSize.width = (int)((double)CVCMatWidth(image) * scale);
-	scaledSize.height = (int)((double)CVCMatHeight(image) * scale);
+	int width = (int)((double)CVCMatWidth(image) * scale);
+	int height = (int)((double)CVCMatHeight(image) * scale);
+   CVCSize scaledSize = CVCSizeCreate(width, height);
 	CVCresize(image, smaller, scaledSize, 0.0, 0.0, CVC_INTER_AREA);
 
 	// convert to grayscale
@@ -36,7 +36,7 @@ int main(int argc, const char * argv[])
 
 	// apply gaussian blur
 	CVCMat blur = CVCMatCreate();
-	CVCSize blurSize = { 0, 0 };
+	CVCSize blurSize = CVCSizeCreate(0, 0);
 	CVCGaussianBlur(gray, blur, blurSize, 3.0, 3.0, CVC_BORDER_DEFAULT);
 
 	// apply edge detection
@@ -49,6 +49,8 @@ int main(int argc, const char * argv[])
 	CVCdestroyAllWindows();
 
 	// cleanup
+	CVCSizeFree(scaledSize);
+	CVCSizeFree(blurSize);
 	CVCMatFree(smaller);
 	CVCMatFree(gray);
 	CVCMatFree(blur);
