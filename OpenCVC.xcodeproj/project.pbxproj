@@ -14,6 +14,10 @@
 		C72A52CD26756E8700EFC4C4 /* data in CopyFiles */ = {isa = PBXBuildFile; fileRef = C72A52CA26756E6200EFC4C4 /* data */; };
 		C72A52D826756F7400EFC4C4 /* CVCObjectDetect.h in Headers */ = {isa = PBXBuildFile; fileRef = C72A52D626756F7400EFC4C4 /* CVCObjectDetect.h */; };
 		C72A52D926756F7400EFC4C4 /* CVCObjectDetect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C72A52D726756F7400EFC4C4 /* CVCObjectDetect.cpp */; };
+		C72A53122675A50500EFC4C4 /* CVCStitching.h in Headers */ = {isa = PBXBuildFile; fileRef = C72A52FE26759DFF00EFC4C4 /* CVCStitching.h */; };
+		C72A53152675A50800EFC4C4 /* CVCStitching.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C72A52FF26759DFF00EFC4C4 /* CVCStitching.cpp */; };
+		C72A534C26765AA600EFC4C4 /* CVCPhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = C72A534A26765AA600EFC4C4 /* CVCPhoto.h */; };
+		C72A534D26765AA600EFC4C4 /* CVCPhoto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C72A534B26765AA600EFC4C4 /* CVCPhoto.cpp */; };
 		EC42B081264DC96200E6FCC7 /* Demo.c in Sources */ = {isa = PBXBuildFile; fileRef = EC42B080264DC96200E6FCC7 /* Demo.c */; };
 		EC67AC3A265C10C100D78360 /* CVCImgCodecs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67AC37265C10B300D78360 /* CVCImgCodecs.cpp */; };
 		EC67AC3D265C1C4300D78360 /* CVCImgProc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67AC3B265C1C4300D78360 /* CVCImgProc.cpp */; };
@@ -64,6 +68,10 @@
 		C72A52CA26756E6200EFC4C4 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		C72A52D626756F7400EFC4C4 /* CVCObjectDetect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVCObjectDetect.h; sourceTree = "<group>"; };
 		C72A52D726756F7400EFC4C4 /* CVCObjectDetect.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CVCObjectDetect.cpp; sourceTree = "<group>"; };
+		C72A52FE26759DFF00EFC4C4 /* CVCStitching.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVCStitching.h; sourceTree = "<group>"; };
+		C72A52FF26759DFF00EFC4C4 /* CVCStitching.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CVCStitching.cpp; sourceTree = "<group>"; };
+		C72A534A26765AA600EFC4C4 /* CVCPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVCPhoto.h; sourceTree = "<group>"; };
+		C72A534B26765AA600EFC4C4 /* CVCPhoto.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CVCPhoto.cpp; sourceTree = "<group>"; };
 		EC42B080264DC96200E6FCC7 /* Demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Demo.c; sourceTree = "<group>"; };
 		EC67AC37265C10B300D78360 /* CVCImgCodecs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVCImgCodecs.cpp; sourceTree = "<group>"; };
 		EC67AC38265C10B300D78360 /* CVCImgCodecs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCImgCodecs.h; sourceTree = "<group>"; };
@@ -152,6 +160,10 @@
 				ECA568D5264D8C2000C36944 /* CVCTypes.h */,
 				C72A52D626756F7400EFC4C4 /* CVCObjectDetect.h */,
 				C72A52D726756F7400EFC4C4 /* CVCObjectDetect.cpp */,
+				C72A52FE26759DFF00EFC4C4 /* CVCStitching.h */,
+				C72A52FF26759DFF00EFC4C4 /* CVCStitching.cpp */,
+				C72A534A26765AA600EFC4C4 /* CVCPhoto.h */,
+				C72A534B26765AA600EFC4C4 /* CVCPhoto.cpp */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -196,9 +208,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C72A53122675A50500EFC4C4 /* CVCStitching.h in Headers */,
 				ECA568D0264C6AD900C36944 /* CVCCore.h in Headers */,
 				ECB633E1264975860007047C /* OpenCVC.h in Headers */,
 				EC67AC3E265C1C4300D78360 /* CVCImgProc.h in Headers */,
+				C72A534C26765AA600EFC4C4 /* CVCPhoto.h in Headers */,
 				C72A52D826756F7400EFC4C4 /* CVCObjectDetect.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,10 +297,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB633E5264975860007047C /* OpenCVC.cpp in Sources */,
+				C72A534D26765AA600EFC4C4 /* CVCPhoto.cpp in Sources */,
 				ECA568D3264D5E0000C36944 /* CVCCore.cpp in Sources */,
 				EC67AC3A265C10C100D78360 /* CVCImgCodecs.cpp in Sources */,
 				EC67AC3D265C1C4300D78360 /* CVCImgProc.cpp in Sources */,
 				C72A52D926756F7400EFC4C4 /* CVCObjectDetect.cpp in Sources */,
+				C72A53152675A50800EFC4C4 /* CVCStitching.cpp in Sources */,
 				ECA568D7264D8D0F00C36944 /* CVCTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +449,7 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INSTALL_PATH = /usr/local/lib;
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -454,6 +471,7 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INSTALL_PATH = /usr/local/lib;
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -469,6 +487,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862792NX6G;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -483,6 +503,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862792NX6G;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

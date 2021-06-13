@@ -23,7 +23,7 @@ CVCMat CVCMatCreate(void)
 void CVCMatFree(CVCMat mat)
 {
 	// safety check
-	if (mat != NULL) {
+	if (mat == NULL) {
 		return;
 	}
 
@@ -46,6 +46,42 @@ CVCMat CVCMatRoi(CVCMat mat, CVCRect rect)
    return (CVCMat)roi;
 }
 
+// Vector of Mat
+CVCMatVector CVCMatVectorCreate(void)
+{
+   try {
+      std::vector<cv::Mat*> *matVector = new std::vector<cv::Mat*>();
+      return (CVCMatVector)matVector;
+   } catch (...) { }
+   
+   return NULL;
+}
+
+void CVCMatVectorFree(CVCMatVector matVector)
+{
+      // safety check
+   if (matVector == NULL) {
+      return;
+   }
+   
+   delete (std::vector<cv::Mat*>*)matVector;
+}
+
+size_t CVCMatVectorSize(CVCMatVector matVector)
+{
+   return (*(std::vector<cv::Mat*>*)matVector).size();
+}
+
+CVCMat CVCMatVectorAt(CVCMatVector matVector, size_t index)
+{
+   return (CVCMat)(*(std::vector<cv::Mat*>*)matVector).at(index);
+}
+
+void CVCMatVectorPushBack(CVCMatVector matVector, CVCMat mat)
+{
+   (*(std::vector<cv::Mat*>*)matVector).push_back(CVCMatPtr(mat));
+}
+
 // Vector of Rect
 CVCRectVector CVCRectVectorCreate(void)
 {
@@ -60,7 +96,7 @@ CVCRectVector CVCRectVectorCreate(void)
 void CVCRectVectorFree(CVCRectVector rectVector)
 {
       // safety check
-   if (rectVector != NULL) {
+   if (rectVector == NULL) {
       return;
    }
    
@@ -78,6 +114,47 @@ CVCRect CVCRectVectorAt(CVCRectVector rectVector, size_t index)
    return { rect.x, rect.y, rect.width, rect.height };
 }
 
+void CVCRectVectorPushBack(CVCRectVector rectVector, CVCRect rect)
+{
+   CVCRectVectorRef(rectVector).push_back(CVCRectParam(rect));
+}
+
+// Vector of Float
+CVCFloatVector CVCFloatVectorCreate(void)
+{
+   try {
+      std::vector<float> *floatVector = new std::vector<float>();
+      return (CVCFloatVector)floatVector;
+   } catch (...) { }
+   
+   return NULL;
+}
+
+void CVCFloatVectorFree(CVCFloatVector floatVector)
+{
+      // safety check
+   if (floatVector == NULL) {
+      return;
+   }
+   
+   delete (std::vector<cv::Rect>*)floatVector;
+}
+
+size_t CVCFloatVectorSize(CVCFloatVector floatVector)
+{
+   return ConstCVCFloatVectorRef(floatVector).size();
+}
+
+float CVCFloatVectorAt(CVCFloatVector floatVector, size_t index)
+{
+   return ConstCVCFloatVectorRef(floatVector).at(index);
+}
+
+void CVCFloatVectorPushBack(CVCFloatVector floatVector, float f)
+{
+   CVCFloatVectorRef(floatVector).push_back(f);
+}
+
 // Size
 CVCSize CVCSizeCreate(int width, int height)
 {
@@ -93,7 +170,7 @@ CVCSize CVCSizeCreate(int width, int height)
 void CVCSizeFree(CVCSize size)
 {
       // safety check
-   if (size != NULL) {
+   if (size == NULL) {
       return;
    }
    
@@ -130,7 +207,7 @@ CVCTermCriteria CVCTermCriteriaCreate(int type, int maxCount, double epsilon)
 void CVCTermCriteriaFree(CVCTermCriteria termCriteria)
 {
       // safety check
-   if (termCriteria != NULL) {
+   if (termCriteria == NULL) {
       return;
    }
    

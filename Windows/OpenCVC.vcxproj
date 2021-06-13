@@ -125,7 +125,9 @@
     <ClInclude Include="..\Source\CVCImgCodecs.h" />
     <ClInclude Include="..\Source\CVCImgProc.h" />
     <ClInclude Include="..\Source\CVCObjectDetect.h" />
+    <ClInclude Include="..\Source\CVCPhoto.h" />
     <ClInclude Include="..\Source\CVCPrivate.h" />
+    <ClInclude Include="..\Source\CVCStitching.h" />
     <ClInclude Include="..\Source\CVCTypes.h" />
     <ClInclude Include="..\Source\OpenCVC.h" />
   </ItemGroup>
@@ -134,6 +136,8 @@
     <ClCompile Include="..\Source\CVCImgCodecs.cpp" />
     <ClCompile Include="..\Source\CVCImgProc.cpp" />
     <ClCompile Include="..\Source\CVCObjectDetect.cpp" />
+    <ClCompile Include="..\Source\CVCPhoto.cpp" />
+    <ClCompile Include="..\Source\CVCStitching.cpp" />
     <ClCompile Include="..\Source\CVCTypes.cpp" />
     <ClCompile Include="..\Source\OpenCVC.cpp" />
     <ClCompile Include="dllmain.cpp" />

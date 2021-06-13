@@ -23,7 +23,7 @@ CVCCascadeClassifier CVCCascadeClassifierCreate(void)
 
 void CVCCascadeClassifierFree(CVCCascadeClassifier cascadeClassifier) {
       // safety check
-   if (cascadeClassifier != NULL) {
+   if (cascadeClassifier == NULL) {
       return;
    }
    

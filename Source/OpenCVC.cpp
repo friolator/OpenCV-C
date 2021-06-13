@@ -40,7 +40,7 @@ CVCVideoCapture CVCVideoCaptureCreate(void)
 
 void CVCVideoCaptureFree(CVCVideoCapture videoCapture) {
 	// safety check
-	if (videoCapture != NULL) {
+	if (videoCapture == NULL) {
 		return;
 	}
 

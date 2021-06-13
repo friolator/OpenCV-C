@@ -6,8 +6,8 @@
 //  Copyright © 2021 Gamma Ray Digital. All rights reserved.
 //
 
-#ifndef CVCObjectDetect_h
-#define CVCObjectDetect_h
+#ifndef CVCOBJECTDETECT_H
+#define CVCOBJECTDETECT_H
 
 #include <stdio.h>
 
@@ -18,4 +18,4 @@ CVC_EXPORT void CVCCascadeClassifierFree(CVCCascadeClassifier cascadeClassifier)
 CVC_EXPORT bool CVCCascadeClassifierLoad(CVCCascadeClassifier cascadeClassifier, const char* path);
 CVC_EXPORT void CVCCascadeClassifierDetectMultiScale(CVCCascadeClassifier cascadeClassifier, CVCMat image, CVCRectVector rects, double scaleFactor, int minNeighbors, int flags, CVCSize minSize, CVCSize maxSize);
 
-#endif /* CVCObjectDetect_h */
+#endif /* CVCOBJECTDETECT_H */

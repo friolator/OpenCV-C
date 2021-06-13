@@ -11,6 +11,8 @@
 #include "OpenCVC.h"
 
 void demoObjectDetect(void);
+void demoStitching(void);
+void demoPhoto(void);
 
 int main(int argc, const char * argv[])
 {
@@ -20,12 +22,20 @@ int main(int argc, const char * argv[])
 		demoObjectDetect();
 		return 0;
 	}
+   else if (argc > 1 && strcmp(argv[1], "-st") == 0) {
+      demoStitching();
+      return 0;
+   }
+   else if (argc > 1 && strcmp(argv[1], "-ph") == 0) {
+      demoPhoto();
+      return 0;
+   }
 
-	CVCMat image = CVCimread("Test-Pattern.tif", CVC_IMREAD_COLOR);
+	CVCMat image = CVCimread("data/starry_night.jpeg", CVC_IMREAD_COLOR);
 	if (image != NULL) {
 		printf("Image loaded.\n");
-		CVCMatFree(image);
-	} else {
+	}
+   else {
 		printf("Error loading image.\n");
 		return 0;
 	}
@@ -57,6 +67,7 @@ int main(int argc, const char * argv[])
 	CVCdestroyAllWindows();
 
 	// cleanup
+   CVCMatFree(image);
 	CVCSizeFree(scaledSize);
 	CVCSizeFree(blurSize);
 	CVCMatFree(smaller);
@@ -137,4 +148,66 @@ void demoObjectDetect()
    CVCRectVectorFree(eyes);
    CVCRectVectorFree(faces);
 	CVCVideoCaptureFree(videoStream);
+}
+
+void demoStitching()
+{
+   CVCMatVector images = CVCMatVectorCreate();
+   
+   char path[128];
+   for (int i = 1; i <= 6; i++) {
+      snprintf(path, sizeof(path), "data/stitching/boat%d.jpg", i);
+      CVCMatVectorPushBack(images, CVCimread(path, CVC_IMREAD_COLOR));
+   }
+
+   CVCMat pano = CVCMatCreate();
+   CVCStitcher stitcher = CVCStitcherCreate(CVC_PANORAMA);
+   int status = CVCStitcherStitch(stitcher, images, pano);
+   if (status != CVC_OK) {
+      printf("Can't stitch images, error code = %d\n", status);
+   }
+   else {
+      // show the stitched image
+      CVCimshow("Stitching", pano);
+      CVCwaitKey(0);
+      CVCdestroyAllWindows();
+   }
+   
+   // cleanup
+   for (int i = 0; i < CVCMatVectorSize(images); i++) {
+      CVCMatFree(CVCMatVectorAt(images, i));
+   }
+   CVCStitcherFree(stitcher);
+   CVCMatFree(pano);
+   CVCMatVectorFree(images);
+}
+
+void demoPhoto()
+{
+	CVCMat src = CVCimread("data/starry_night.jpeg", CVC_IMREAD_COLOR);
+	CVCMat dst = CVCMatCreate();
+   CVCMat dst2 = CVCMatCreate();
+   
+   CVCimshow("Source", src);
+   
+   CVCedgePreservingFilter(src, dst, CVC_NORMCONV_FILTER, 60, 0.4f);
+   CVCimshow("Edge Preserving Filter", dst);
+   
+   CVCdetailEnhance(src, dst, 10, 0.15f);
+   CVCimshow("Detail Enhance", dst);
+   
+   CVCpencilSketch(src, dst, dst2, 10 , 0.1f, 0.03f);
+   CVCimshow("Pencil Sketch", dst);
+   CVCimshow("Color Pencil Sketch", dst2);
+   
+   CVCstylization(src, dst, 60, 0.45f);
+   CVCimshow("Stylization", dst);
+   
+   CVCwaitKey(0);
+   CVCdestroyAllWindows();
+
+   // cleanup
+   CVCMatFree(dst2);
+	CVCMatFree(dst);
+	CVCMatFree(src);
 }

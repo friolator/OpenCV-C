@@ -18,6 +18,8 @@
 #include "CVCImgCodecs.h"
 #include "CVCImgProc.h"
 #include "CVCObjectDetect.h"
+#include "CVCPhoto.h"
+#include "CVCStitching.h"
 
 // high gui functions
 CVC_EXPORT void CVCdestroyAllWindows(void);

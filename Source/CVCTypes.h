@@ -19,7 +19,7 @@
 #ifdef __cplusplus
 #define CVC_EXPORT extern "C"
 #else
-#define CVC_EXPORT
+#define CVC_EXPORT __attribute__((visibility("default")))
 #endif // __cplusplus
 #endif // _WIN32
 
@@ -35,6 +35,15 @@ CVC_EXPORT void CVCMatFree(CVCMat mat);
 CVC_EXPORT int CVCMatHeight(CVCMat mat);
 CVC_EXPORT int CVCMatWidth(CVCMat mat);
 CVC_EXPORT CVCMat CVCMatRoi(CVCMat mat, CVCRect rect);
+
+// Vector of Mat
+typedef void* CVCMatVector;
+
+CVC_EXPORT CVCMatVector CVCMatVectorCreate(void);
+CVC_EXPORT void CVCMatVectorFree(CVCMatVector matVector);
+CVC_EXPORT size_t CVCMatVectorSize(CVCMatVector matVector);
+CVC_EXPORT CVCMat CVCMatVectorAt(CVCMatVector matVector, size_t index);
+CVC_EXPORT void CVCMatVectorPushBack(CVCMatVector matVector, CVCMat mat);
 
 // Point
 typedef struct CVCPoint {
@@ -66,14 +75,23 @@ CVC_EXPORT CVCRectVector CVCRectVectorCreate(void);
 CVC_EXPORT void CVCRectVectorFree(CVCRectVector rectVector);
 CVC_EXPORT size_t CVCRectVectorSize(CVCRectVector rectVector);
 CVC_EXPORT CVCRect CVCRectVectorAt(CVCRectVector rectVector, size_t index);
+CVC_EXPORT void CVCRectVectorPushBack(CVCRectVector rectVector, CVCRect rect);
+
+// Vector of float
+typedef void* CVCFloatVector;
+
+CVC_EXPORT CVCRectVector CVCRectVectorCreate(void);
+CVC_EXPORT void CVCRectVectorFree(CVCRectVector rectVector);
+CVC_EXPORT size_t CVCRectVectorSize(CVCRectVector rectVector);
+CVC_EXPORT CVCRect CVCRectVectorAt(CVCRectVector rectVector, size_t index);
 
 // TermCriteria
 typedef void* CVCTermCriteria;
 
 enum CVCTermCriteriaType {
-   COUNT=1,
-   MAX_ITER=COUNT,
-   EPS=2
+   CVC_COUNT=1,
+   CVC_MAX_ITER=CVC_COUNT,
+   CVC_EPS=2
 };
 
 CVC_EXPORT CVCTermCriteria CVCTermCriteriaCreate(int type, int maxCount, double epsilon);
