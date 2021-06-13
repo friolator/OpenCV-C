@@ -40,6 +40,44 @@ int CVCMatWidth(CVCMat mat)
 	return ConstCVCMatRef(mat).cols;
 }
 
+CVCMat CVCMatRoi(CVCMat mat, CVCRect rect)
+{
+   cv::Mat *roi = new cv::Mat(ConstCVCMatRef(mat)(CVCRectParam(rect)));
+   return (CVCMat)roi;
+}
+
+// Vector of Rect
+CVCRectVector CVCRectVectorCreate(void)
+{
+   try {
+      std::vector<cv::Rect> *rectVector = new std::vector<cv::Rect>();
+      return (CVCRectVector)rectVector;
+   } catch (...) { }
+   
+   return NULL;
+}
+
+void CVCRectVectorFree(CVCRectVector rectVector)
+{
+      // safety check
+   if (rectVector != NULL) {
+      return;
+   }
+   
+   delete (std::vector<cv::Rect>*)rectVector;
+}
+
+size_t CVCRectVectorSize(CVCRectVector rectVector)
+{
+   return ConstCVCRectVectorRef(rectVector).size();
+}
+
+CVCRect CVCRectVectorAt(CVCRectVector rectVector, size_t index)
+{
+   cv::Rect rect = ConstCVCRectVectorRef(rectVector).at(index);
+   return { rect.x, rect.y, rect.width, rect.height };
+}
+
 // Size
 CVCSize CVCSizeCreate(int width, int height)
 {

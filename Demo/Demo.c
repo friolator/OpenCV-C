@@ -7,11 +7,19 @@
 //
 
 #include <stdio.h>
+#include <string.h>
 #include "OpenCVC.h"
+
+void demoObjectDetect(void);
 
 int main(int argc, const char * argv[])
 {
 	printf("Running...\n");
+
+	if (argc > 1 && strcmp(argv[1], "-od") == 0) {
+		demoObjectDetect();
+		return 0;
+	}
 
 	CVCMat image = CVCimread("Test-Pattern.tif", CVC_IMREAD_COLOR);
 	if (image != NULL) {
@@ -59,4 +67,74 @@ int main(int argc, const char * argv[])
 	printf("Finished.\n");
 
 	return 0;
+}
+
+void demoObjectDetect()
+{
+	CVCVideoCapture videoStream = CVCVideoCaptureCreate();
+
+	if (!CVCVideoCaptureIsOpened(videoStream))
+	{
+		printf("Error: Cannot open video stream from camera\n");
+		return;
+	}
+
+   CVCRectVector faces = CVCRectVectorCreate();
+   CVCRectVector eyes = CVCRectVectorCreate();
+   CVCCascadeClassifier faceCascade = CVCCascadeClassifierCreate();
+   CVCCascadeClassifier eyeCascade = CVCCascadeClassifierCreate();
+   
+   // load pre-trained classifiers
+   CVCCascadeClassifierLoad(faceCascade, "data/haarcascades/haarcascade_frontalface_default.xml");
+   CVCCascadeClassifierLoad(eyeCascade, "data/haarcascades/haarcascade_eye.xml");
+   
+   // detect faces
+   CVCSize size = CVCSizeCreate(0, 0);
+   
+	do
+	{
+		CVCMat frame = CVCMatCreate();
+		if (CVCVideoCaptureRead(videoStream, frame))
+		{
+         CVCMat gray = CVCMatCreate();
+         CVCcvtColor(frame, gray, CVC_COLOR_RGB2GRAY, 0);
+         
+         CVCCascadeClassifierDetectMultiScale(faceCascade, gray, faces, 1.1, 3, 0, size, size);
+         
+         for (size_t i = 0; i < CVCRectVectorSize(faces); ++i) {
+            CVCRect roiRect = CVCRectVectorAt(faces, i);
+            CVCMat roiGray = CVCMatRoi(gray, roiRect);
+            CVCMat roiSrc = CVCMatRoi(frame, roiRect);
+            CVCPoint point1 = {roiRect.x, roiRect.y};
+            CVCPoint point2 = {roiRect.x + roiRect.width, roiRect.y + roiRect.height};
+            CVCrectangle(frame, point1, point2, (CVCScalar){255, 0, 0, 255}, 1, CVC_LINE_8, 0);
+            
+            // detect eyes in face ROI
+            CVCCascadeClassifierDetectMultiScale(eyeCascade, roiGray, eyes, 1.1, 3, 0, size, size);
+            for (size_t j = 0; j < CVCRectVectorSize(eyes); ++j) {
+               CVCRect roiRect = CVCRectVectorAt(eyes, j);
+               CVCPoint point1 = {roiRect.x, roiRect.y};
+               CVCPoint point2 = {roiRect.x + roiRect.width, roiRect.y + roiRect.height};
+               CVCrectangle(roiSrc, point1, point2, (CVCScalar){0, 0, 255, 255}, 1, CVC_LINE_8, 0);
+            }
+            CVCMatFree(roiGray);
+            CVCMatFree(roiSrc);
+         }
+			CVCimshow("Object Detection", frame);
+
+         CVCMatFree(gray);
+		}
+		CVCMatFree(frame);
+
+	} while (CVCwaitKey(30) < 0);
+
+	CVCdestroyAllWindows();
+
+	// cleanup
+   CVCSizeFree(size);
+   CVCCascadeClassifierFree(eyeCascade);
+   CVCCascadeClassifierFree(faceCascade);
+   CVCRectVectorFree(eyes);
+   CVCRectVectorFree(faces);
+	CVCVideoCaptureFree(videoStream);
 }

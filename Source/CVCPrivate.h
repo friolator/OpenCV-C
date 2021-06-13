@@ -20,6 +20,11 @@
 #define CVCSizeParam(value)		cv::Size(value.width, value.height)
 #define CVCRectParam(value)	cv::Rect(value.x, value.y, value.width, value.height)
 
+#define CVCRectVectorPtr(value)      ((std::vector<cv::Rect>*)value)
+#define CVCRectVectorRef(value)      (*(std::vector<cv::Rect>*)value)
+#define ConstCVCRectVectorPtr(value)   ((const std::vector<cv::Rect>*)value)
+#define ConstCVCRectVectorRef(value)   (*(const std::vector<cv::Rect>*)value)
+
 #define CVCSizeRef(value)     (*(cv::Size*)value)
 #define CVCTermCriteriaRef(value)      (*(cv::TermCriteria*)value)
 

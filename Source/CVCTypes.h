@@ -25,11 +25,18 @@
 
 typedef void*	CVCMat;
 
+// Rect
+typedef struct CVCRect {
+   int x, y, width, height;
+} CVCRect;
+
 CVC_EXPORT CVCMat CVCMatCreate(void);
 CVC_EXPORT void CVCMatFree(CVCMat mat);
 CVC_EXPORT int CVCMatHeight(CVCMat mat);
 CVC_EXPORT int CVCMatWidth(CVCMat mat);
+CVC_EXPORT CVCMat CVCMatRoi(CVCMat mat, CVCRect rect);
 
+// Point
 typedef struct CVCPoint {
 	int x, y;
 } CVCPoint;
@@ -38,10 +45,12 @@ typedef struct CVCPoint2f {
 	float x, y;
 } CVCPoint2f;
 
+// Scalar
 typedef struct CVCScalar {
 	double v0, v1, v2, v3;
 } CVCScalar;
 
+// Size
 typedef void* CVCSize;
 
 CVC_EXPORT CVCSize CVCSizeCreate(int width, int height);
@@ -50,9 +59,13 @@ CVC_EXPORT double CVCSizeAspectRatio(CVCSize size);
 CVC_EXPORT int CVCSizeArea(CVCSize size);
 CVC_EXPORT bool CVCSizeEmpty(CVCSize size);
 
-typedef struct CVCRect {
-	int width, height, x, y;
-} CVCRect;
+// Vector of Rect
+typedef void* CVCRectVector;
+
+CVC_EXPORT CVCRectVector CVCRectVectorCreate(void);
+CVC_EXPORT void CVCRectVectorFree(CVCRectVector rectVector);
+CVC_EXPORT size_t CVCRectVectorSize(CVCRectVector rectVector);
+CVC_EXPORT CVCRect CVCRectVectorAt(CVCRectVector rectVector, size_t index);
 
 // TermCriteria
 typedef void* CVCTermCriteria;

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C72A52B22675332E00EFC4C4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72A52B12675332E00EFC4C4 /* AVFoundation.framework */; };
+		C72A52B62675336C00EFC4C4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72A52B52675336C00EFC4C4 /* CoreVideo.framework */; };
+		C72A52B82675337B00EFC4C4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72A52B72675337B00EFC4C4 /* CoreMedia.framework */; };
+		C72A52C3267537B000EFC4C4 /* Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = C72A52C0267536F800EFC4C4 /* Info.plist */; };
+		C72A52CD26756E8700EFC4C4 /* data in CopyFiles */ = {isa = PBXBuildFile; fileRef = C72A52CA26756E6200EFC4C4 /* data */; };
+		C72A52D826756F7400EFC4C4 /* CVCObjectDetect.h in Headers */ = {isa = PBXBuildFile; fileRef = C72A52D626756F7400EFC4C4 /* CVCObjectDetect.h */; };
+		C72A52D926756F7400EFC4C4 /* CVCObjectDetect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C72A52D726756F7400EFC4C4 /* CVCObjectDetect.cpp */; };
 		EC42B081264DC96200E6FCC7 /* Demo.c in Sources */ = {isa = PBXBuildFile; fileRef = EC42B080264DC96200E6FCC7 /* Demo.c */; };
 		EC67AC3A265C10C100D78360 /* CVCImgCodecs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67AC37265C10B300D78360 /* CVCImgCodecs.cpp */; };
 		EC67AC3D265C1C4300D78360 /* CVCImgProc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67AC3B265C1C4300D78360 /* CVCImgProc.cpp */; };
@@ -37,16 +44,26 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		ECB6340226497C470007047C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				C72A52CD26756E8700EFC4C4 /* data in CopyFiles */,
+				C72A52C3267537B000EFC4C4 /* Info.plist in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C72A52B12675332E00EFC4C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C72A52B52675336C00EFC4C4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		C72A52B72675337B00EFC4C4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		C72A52BB2675357F00EFC4C4 /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
+		C72A52C0267536F800EFC4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C72A52CA26756E6200EFC4C4 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
+		C72A52D626756F7400EFC4C4 /* CVCObjectDetect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVCObjectDetect.h; sourceTree = "<group>"; };
+		C72A52D726756F7400EFC4C4 /* CVCObjectDetect.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CVCObjectDetect.cpp; sourceTree = "<group>"; };
 		EC42B080264DC96200E6FCC7 /* Demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Demo.c; sourceTree = "<group>"; };
 		EC67AC37265C10B300D78360 /* CVCImgCodecs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVCImgCodecs.cpp; sourceTree = "<group>"; };
 		EC67AC38265C10B300D78360 /* CVCImgCodecs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCImgCodecs.h; sourceTree = "<group>"; };
@@ -75,6 +92,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C72A52B82675337B00EFC4C4 /* CoreMedia.framework in Frameworks */,
+				C72A52B62675336C00EFC4C4 /* CoreVideo.framework in Frameworks */,
+				C72A52B22675332E00EFC4C4 /* AVFoundation.framework in Frameworks */,
 				ECB634122649D0740007047C /* Cocoa.framework in Frameworks */,
 				ECB634102649CDA90007047C /* Accelerate.framework in Frameworks */,
 				ECB633F2264978370007047C /* Foundation.framework in Frameworks */,
@@ -130,6 +150,8 @@
 				ECA568D4264D5F7E00C36944 /* CVCPrivate.h */,
 				ECA568D6264D8D0F00C36944 /* CVCTypes.cpp */,
 				ECA568D5264D8C2000C36944 /* CVCTypes.h */,
+				C72A52D626756F7400EFC4C4 /* CVCObjectDetect.h */,
+				C72A52D726756F7400EFC4C4 /* CVCObjectDetect.cpp */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -145,6 +167,9 @@
 		ECB633F0264978370007047C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C72A52B72675337B00EFC4C4 /* CoreMedia.framework */,
+				C72A52B52675336C00EFC4C4 /* CoreVideo.framework */,
+				C72A52B12675332E00EFC4C4 /* AVFoundation.framework */,
 				ECB6340F2649CDA90007047C /* Accelerate.framework */,
 				ECB634112649D0740007047C /* Cocoa.framework */,
 				ECB633F1264978370007047C /* Foundation.framework */,
@@ -156,7 +181,10 @@
 		ECB6340526497C470007047C /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				C72A52CA26756E6200EFC4C4 /* data */,
+				C72A52BB2675357F00EFC4C4 /* Demo.entitlements */,
 				EC42B080264DC96200E6FCC7 /* Demo.c */,
+				C72A52C0267536F800EFC4C4 /* Info.plist */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -171,6 +199,7 @@
 				ECA568D0264C6AD900C36944 /* CVCCore.h in Headers */,
 				ECB633E1264975860007047C /* OpenCVC.h in Headers */,
 				EC67AC3E265C1C4300D78360 /* CVCImgProc.h in Headers */,
+				C72A52D826756F7400EFC4C4 /* CVCObjectDetect.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +286,7 @@
 				ECA568D3264D5E0000C36944 /* CVCCore.cpp in Sources */,
 				EC67AC3A265C10C100D78360 /* CVCImgCodecs.cpp in Sources */,
 				EC67AC3D265C1C4300D78360 /* CVCImgProc.cpp in Sources */,
+				C72A52D926756F7400EFC4C4 /* CVCObjectDetect.cpp in Sources */,
 				ECA568D7264D8D0F00C36944 /* CVCTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,7 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A63XWBVGEW;
+				DEVELOPMENT_TEAM = 862792NX6G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
@@ -412,7 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A63XWBVGEW;
+				DEVELOPMENT_TEAM = 862792NX6G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
@@ -434,14 +464,11 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A63XWBVGEW;
+				DEVELOPMENT_TEAM = 862792NX6G;
 				ENABLE_HARDENED_RUNTIME = YES;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Build/Products/Debug",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -451,14 +478,11 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A63XWBVGEW;
+				DEVELOPMENT_TEAM = 862792NX6G;
 				ENABLE_HARDENED_RUNTIME = YES;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Build/Products/Debug",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
