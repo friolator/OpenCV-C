@@ -42,30 +42,24 @@ bool CVCimwritemulti(const char *filename, InputArrayOfArrays img, const std::ve
 {
 }
 */
-CVCMat CVCimdecode(CVCMat buf, int flags)
+CVCMat CVCimdecode(CVCUCharVector buf, int flags)
 {
 	CVCMat mat = CVCMatCreate();
-	CVCMatRef(mat) = cv::imdecode(CVCMatRef(buf), flags);
+	CVCMatRef(mat) = cv::imdecode(CVCUCharVectorRef(buf), flags);
 	return mat;
 }
+
 /*
 CVCMat CVCimdecode(CVCMat buf, int flags, CVCMat dst);
 {
 }
+ */
 
-bool CVCimencode(const char* ext, CVCMat img, CV_OUT std::vector<uchar>& buf, const int* params, int paramCount)
+bool CVCimencode(const char* ext, CVCMat img, CVCUCharVector buf, CVCIntVector params)
 {
-	// convert the parameters
-	std::vector<int> cvParams;
-	for (int c = 0; c < paramCount; c++) {
-		cvParams.push_back(params[c]);
-	}
-
-	// TODO: convert the buf parameter
-
-	return cv::imencode(ext, CVCMatRef(img), buf, cvParams);
+	return cv::imencode(ext, CVCMatRef(img), CVCUCharVectorRef(buf), CVCIntVectorRef(params));
 }
-*/
+
 bool CVChaveImageReader(const char* filename)
 {
 	return cv::haveImageReader(filename);

@@ -60,13 +60,25 @@ int main(int argc, const char * argv[])
 	// apply edge detection
 	CVCMat canny = CVCMatCreate();
 	CVCCanny(blur, canny, 125.0, 175.0, 3, false);
-
+   
+   // encode/decode
+   CVCUCharVector buffer = CVCUCharVectorCreate();
+   CVCIntVector params = CVCIntVectorCreate();
+   CVCIntVectorPushBack(params, CVC_IMWRITE_PNG_COMPRESSION);
+   CVCIntVectorPushBack(params, 9);
+   CVCimencode(".png", image, buffer, params);
+   CVCMat png = CVCimdecode(buffer, CVC_IMREAD_COLOR);
+   CVCimshow("png", png);
+   
 	// show the image
 	CVCimshow("canny", blur);
 	CVCwaitKey(0);
 	CVCdestroyAllWindows();
 
 	// cleanup
+   CVCMatFree(png);
+   CVCUCharVectorFree(buffer);
+   CVCIntVectorFree(params);
    CVCMatFree(image);
 	CVCSizeFree(scaledSize);
 	CVCSizeFree(blurSize);

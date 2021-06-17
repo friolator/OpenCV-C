@@ -119,7 +119,48 @@ void CVCRectVectorPushBack(CVCRectVector rectVector, CVCRect rect)
    CVCRectVectorRef(rectVector).push_back(CVCRectParam(rect));
 }
 
-// Vector of Float
+// Vector of int
+CVCIntVector CVCIntVectorCreate(void)
+{
+   try {
+      std::vector<int> *intVector = new std::vector<int>();
+      return (CVCIntVector)intVector;
+   } catch (...) { }
+   
+   return NULL;
+}
+
+void CVCIntVectorFree(CVCIntVector intVector)
+{
+      // safety check
+   if (intVector == NULL) {
+      return;
+   }
+   
+   delete (std::vector<int>*)intVector;
+}
+
+size_t CVCIntVectorSize(CVCIntVector intVector)
+{
+   return ConstCVCIntVectorRef(intVector).size();
+}
+
+int CVCIntVectorAt(CVCIntVector intVector, size_t index)
+{
+   return ConstCVCIntVectorRef(intVector).at(index);
+}
+
+void CVCIntVectorPushBack(CVCIntVector intVector, int i)
+{
+   CVCIntVectorRef(intVector).push_back(i);
+}
+
+int * CVCIntVectorData(CVCIntVector intVector)
+{
+   return (int *)CVCIntVectorRef(intVector).data();
+}
+
+// Vector of float
 CVCFloatVector CVCFloatVectorCreate(void)
 {
    try {
@@ -137,7 +178,7 @@ void CVCFloatVectorFree(CVCFloatVector floatVector)
       return;
    }
    
-   delete (std::vector<cv::Rect>*)floatVector;
+   delete (std::vector<float>*)floatVector;
 }
 
 size_t CVCFloatVectorSize(CVCFloatVector floatVector)
@@ -153,6 +194,52 @@ float CVCFloatVectorAt(CVCFloatVector floatVector, size_t index)
 void CVCFloatVectorPushBack(CVCFloatVector floatVector, float f)
 {
    CVCFloatVectorRef(floatVector).push_back(f);
+}
+
+float * CVCFloatVectorData(CVCFloatVector floatVector)
+{
+   return (float *)CVCFloatVectorRef(floatVector).data();
+}
+  
+// Vector of unsigned char
+CVCUCharVector CVCUCharVectorCreate(void)
+{
+   try {
+      std::vector<uchar> *ucharVector = new std::vector<uchar>();
+      return (CVCUCharVector)ucharVector;
+   } catch (...) { }
+   
+   return NULL;
+}
+
+void CVCUCharVectorFree(CVCUCharVector ucharVector)
+{
+      // safety check
+   if (ucharVector == NULL) {
+      return;
+   }
+   
+   delete (std::vector<uchar>*)ucharVector;
+}
+
+size_t CVCUCharVectorSize(CVCUCharVector ucharVector)
+{
+   return CVCUCharVectorRef(ucharVector).size();
+}
+
+unsigned char CVCUCharVectorAt(CVCUCharVector ucharVector, size_t index)
+{
+   return CVCUCharVectorRef(ucharVector).at(index);
+}
+
+void CVCUCharVectorPushBack(CVCUCharVector ucharVector, unsigned char c)
+{
+   CVCUCharVectorRef(ucharVector).push_back(c);
+}
+
+unsigned char * CVCUCharVectorData(CVCUCharVector ucharVector)
+{
+   return (unsigned char *)CVCUCharVectorRef(ucharVector).data();
 }
 
 // Size
@@ -175,6 +262,16 @@ void CVCSizeFree(CVCSize size)
    }
    
    delete (cv::Size*)size;
+}
+
+int CVCSizeWidth(CVCSize size)
+{
+   return ((cv::Size*)size)->width;
+}
+
+int CVCSizeHeight(CVCSize size)
+{
+   return ((cv::Size*)size)->height;
 }
 
 double CVCSizeAspectRatio(CVCSize size)

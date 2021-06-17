@@ -10,17 +10,17 @@
 #define CVCTYPES_H
 
 #ifdef _WIN32
-#ifdef __cplusplus
-#define CVC_EXPORT extern "C" __declspec(dllexport)
+   #ifdef __cplusplus
+      #define CVC_EXPORT extern "C" __declspec(dllexport)
+   #else
+      #define CVC_EXPORT __declspec(dllexport)
+   #endif // __cplusplus
 #else
-#define CVC_EXPORT __declspec(dllexport)
-#endif // __cplusplus
-#else
-#ifdef __cplusplus
-#define CVC_EXPORT extern "C"
-#else
-#define CVC_EXPORT __attribute__((visibility("default")))
-#endif // __cplusplus
+   #ifdef __cplusplus
+      #define CVC_EXPORT extern "C"
+   #else
+      #define CVC_EXPORT
+   #endif // __cplusplus
 #endif // _WIN32
 
 typedef void*	CVCMat;
@@ -64,6 +64,8 @@ typedef void* CVCSize;
 
 CVC_EXPORT CVCSize CVCSizeCreate(int width, int height);
 CVC_EXPORT void CVCSizeFree(CVCSize size);
+CVC_EXPORT int CVCSizeWidth(CVCSize size);
+CVC_EXPORT int CVCSizeHeight(CVCSize size);
 CVC_EXPORT double CVCSizeAspectRatio(CVCSize size);
 CVC_EXPORT int CVCSizeArea(CVCSize size);
 CVC_EXPORT bool CVCSizeEmpty(CVCSize size);
@@ -77,13 +79,35 @@ CVC_EXPORT size_t CVCRectVectorSize(CVCRectVector rectVector);
 CVC_EXPORT CVCRect CVCRectVectorAt(CVCRectVector rectVector, size_t index);
 CVC_EXPORT void CVCRectVectorPushBack(CVCRectVector rectVector, CVCRect rect);
 
+// Vector of int
+typedef void* CVCIntVector;
+
+CVC_EXPORT CVCIntVector CVCIntVectorCreate(void);
+CVC_EXPORT void CVCIntVectorFree(CVCIntVector intVector);
+CVC_EXPORT size_t CVCIntVectorSize(CVCIntVector intVector);
+CVC_EXPORT int CVCIntVectorAt(CVCIntVector intVector, size_t index);
+CVC_EXPORT void CVCIntVectorPushBack(CVCIntVector intVector, int i);
+CVC_EXPORT int * CVCIntVectorData(CVCIntVector intVector);
+
 // Vector of float
 typedef void* CVCFloatVector;
 
-CVC_EXPORT CVCRectVector CVCRectVectorCreate(void);
-CVC_EXPORT void CVCRectVectorFree(CVCRectVector rectVector);
-CVC_EXPORT size_t CVCRectVectorSize(CVCRectVector rectVector);
-CVC_EXPORT CVCRect CVCRectVectorAt(CVCRectVector rectVector, size_t index);
+CVC_EXPORT CVCFloatVector CVCFloatVectorCreate(void);
+CVC_EXPORT void CVCFloatVectorFree(CVCFloatVector floatVector);
+CVC_EXPORT size_t CVCFloatVectorSize(CVCFloatVector floatVector);
+CVC_EXPORT float CVCFloatVectorAt(CVCFloatVector floatVector, size_t index);
+CVC_EXPORT void CVCFloatVectorPushBack(CVCFloatVector floatVector, float f);
+CVC_EXPORT float * CVCFloatVectorData(CVCFloatVector floatVector);
+
+// Vector of unsigned char
+typedef void* CVCUCharVector;
+
+CVC_EXPORT CVCUCharVector CVCUCharVectorCreate(void);
+CVC_EXPORT void CVCUCharVectorFree(CVCUCharVector ucharVector);
+CVC_EXPORT size_t CVCUCharVectorSize(CVCUCharVector ucharVector);
+CVC_EXPORT unsigned char CVCUCharVectorAt(CVCUCharVector ucharVector, size_t index);
+CVC_EXPORT void CVCUCharPushBack(CVCUCharVector ucharVector, unsigned char c);
+CVC_EXPORT unsigned char * CVCUCharVectorData(CVCUCharVector ucharVector);
 
 // TermCriteria
 typedef void* CVCTermCriteria;

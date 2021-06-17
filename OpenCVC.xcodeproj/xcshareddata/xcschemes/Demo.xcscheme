@@ -57,7 +57,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-ph"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-st"

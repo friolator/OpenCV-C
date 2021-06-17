@@ -332,7 +332,10 @@ void CVCpyrUp(CVCMat src, CVCMat dst, CVCSize dstsize, int borderType)
 
 //void CVCbuildPyramid(CVCMat src, OutputArrayOfArrays dst, int maxlevel, int borderType)
 
-//void CVCcalcHist(const Mat* images, int nimages, const int* channels, CVCMat mask, CVCMat hist, int dims, const int* histSize, const float** ranges, bool uniform, bool accumulate)
+void CVCcalcHist(CVCMat images, int nimages, const int* channels, CVCMat mask, CVCMat hist, int dims, const int* histSize, const float** ranges, bool uniform, bool accumulate)
+{
+   cv::calcHist(ConstCVCMatPtr(images), 1, channels, CVCMatRef(mask), CVCMatRef(hist), dims, histSize, ranges, uniform, accumulate);
+}
 
 //void CVCcalcHist(const Mat* images, int nimages, const int* channels, CVCMat mask, SparseMat& hist, int dims, const int* histSize, const float** ranges, bool uniform, bool accumulate)
 

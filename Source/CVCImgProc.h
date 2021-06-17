@@ -935,7 +935,7 @@ CVC_EXPORT void CVCpyrUp(CVCMat src, CVCMat dst, CVCSize dstsize, int borderType
 //CVC_EXPORT void CVCbuildPyramid(CVCMat src, OutputArrayOfArrays dst, int maxlevel, int borderType);
 
 /** @brief Calculates a histogram of a set of arrays. */
-//CVC_EXPORT void CVCcalcHist(const Mat* images, int nimages, const int* channels, CVCMat mask, CVCMat hist, int dims, const int* histSize, const float** ranges, bool uniform, bool accumulate);
+CVC_EXPORT void CVCcalcHist(CVCMat images, int nimages, const int* channels, CVCMat mask, CVCMat hist, int dims, const int* histSize, const float** ranges, bool uniform, bool accumulate);
 
 //CVC_EXPORT void CVCcalcHist(const Mat* images, int nimages, const int* channels, CVCMat mask, SparseMat& hist, int dims, const int* histSize, const float** ranges, bool uniform, bool accumulate);
 

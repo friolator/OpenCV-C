@@ -30,10 +30,20 @@
 #define ConstCVCRectVectorPtr(value)   ((const std::vector<cv::Rect>*)value)
 #define ConstCVCRectVectorRef(value)   (*(const std::vector<cv::Rect>*)value)
 
+#define CVCIntVectorPtr(value)      ((std::vector<int>*)value)
+#define CVCIntVectorRef(value)      (*(std::vector<int>*)value)
+#define ConstCVCIntVectorPtr(value)   ((const std::vector<int>*)value)
+#define ConstCVCIntVectorRef(value)   (*(const std::vector<int>*)value)
+
 #define CVCFloatVectorPtr(value)      ((std::vector<float>*)value)
 #define CVCFloatVectorRef(value)      (*(std::vector<float>*)value)
 #define ConstCVCFloatVectorPtr(value)   ((const std::vector<float>*)value)
 #define ConstCVCFloatVectorRef(value)   (*(const std::vector<float>*)value)
+
+#define CVCUCharVectorPtr(value)      ((std::vector<uchar>*)value)
+#define CVCUCharVectorRef(value)      (*(std::vector<uchar>*)value)
+#define ConstCVCUCharVectorPtr(value)   ((const std::vector<uchar>*)value)
+#define ConstCVCUCharVectorRef(value)   (*(const std::vector<uchar>*)value)
 
 #define CVCSizeRef(value)     (*(cv::Size*)value)
 #define CVCTermCriteriaRef(value)      (*(cv::TermCriteria*)value)

@@ -95,12 +95,12 @@ CVC_EXPORT bool CVCimwrite(const char* filename, CVCMat img, const int* params, 
 //CVC_EXPORT bool CVCimwritemulti(const char *filename, InputArrayOfArrays img, const std::vector<int>& params = std::vector<int>())
 
 /** @brief Reads an image from a buffer in memory. */
-CVC_EXPORT CVCMat CVCimdecode(CVCMat buf, int flags);
+CVC_EXPORT CVCMat CVCimdecode(CVCUCharVector buf, int flags);
 
 //CVC_EXPORT CVCMat CVCimdecode(CVCMat buf, int flags, CVCMat dst);
 
 /** @brief Encodes an image into a memory buffer. */
-//CVC_EXPORT bool CVCimencode(const char* ext, CVCMat img, std::vector<uchar>& buf, const int* params, int paramCount);
+CVC_EXPORT bool CVCimencode(const char* ext, CVCMat img, CVCUCharVector buf, CVCIntVector params);
 
 /** @brief Returns true if the specified image can be decoded by OpenCV */
 CVC_EXPORT bool CVChaveImageReader(const char* filename);
