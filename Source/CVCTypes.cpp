@@ -10,6 +10,58 @@
 #include "OpenCVC.h"
 #include "CVCPrivate.h"
 
+// Rect
+CVCRect CVCRectCreate(int x, int y, int width, int height)
+{
+   try {
+      cv::Rect *rect = new cv::Rect(x, y, width, height);
+      return (CVCRect)rect;
+      
+   } catch (...) { }
+   
+   return NULL;
+}
+
+void CVCRectFree(CVCRect rect)
+{
+   // safety check
+   if (rect == NULL) {
+      return;
+   }
+   
+   delete (cv::Rect*)rect;
+}
+
+int CVCRectX(CVCRect rect)
+{
+   return ((cv::Rect*)rect)->x;
+}
+
+int CVCRectY(CVCRect rect)
+{
+   return ((cv::Rect*)rect)->y;
+}
+
+int CVCRectWidth(CVCRect rect)
+{
+   return ((cv::Rect*)rect)->width;
+}
+
+int CVCRectHeight(CVCRect rect)
+{
+   return ((cv::Rect*)rect)->height;
+}
+
+int CVCRectArea(CVCRect rect)
+{
+   return ((cv::Size*)rect)->area();
+}
+
+bool CVCRectEmpty(CVCRect rect)
+{
+   return ((cv::Rect*)rect)->empty();
+}
+
 CVCMat CVCMatCreate(void)
 {
 	try {
@@ -42,7 +94,7 @@ int CVCMatWidth(CVCMat mat)
 
 CVCMat CVCMatRoi(CVCMat mat, CVCRect rect)
 {
-   cv::Mat *roi = new cv::Mat(ConstCVCMatRef(mat)(CVCRectParam(rect)));
+   cv::Mat *roi = new cv::Mat(ConstCVCMatRef(mat)(CVCRectRef(rect)));
    return (CVCMat)roi;
 }
 
@@ -111,12 +163,12 @@ size_t CVCRectVectorSize(CVCRectVector rectVector)
 CVCRect CVCRectVectorAt(CVCRectVector rectVector, size_t index)
 {
    cv::Rect rect = ConstCVCRectVectorRef(rectVector).at(index);
-   return { rect.x, rect.y, rect.width, rect.height };
+   return CVCRectCreate(rect.x, rect.y, rect.width, rect.height);
 }
 
 void CVCRectVectorPushBack(CVCRectVector rectVector, CVCRect rect)
 {
-   CVCRectVectorRef(rectVector).push_back(CVCRectParam(rect));
+   CVCRectVectorRef(rectVector).push_back(CVCRectRef(rect));
 }
 
 // Vector of int

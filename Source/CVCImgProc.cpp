@@ -554,7 +554,7 @@ void CVCrectangle(CVCMat img, CVCPoint pt1, CVCPoint pt2, CVCScalar color, int t
 }
 
 void CVCrectangle2(CVCMat img, CVCRect rect, CVCScalar color, int thickness, int lineType, int shift) {
-	cv::rectangle(CVCMatRef(img), CVCRectParam(rect), CVCScalarParam(color), thickness, lineType, shift);
+	cv::rectangle(CVCMatRef(img), CVCRectRef(rect), CVCScalarParam(color), thickness, lineType, shift);
 }
 
 void CVCcircle(CVCMat img, CVCPoint center, int radius, CVCScalar color, int thickness, int lineType, int shift)

@@ -128,17 +128,19 @@ void demoObjectDetect()
             CVCRect roiRect = CVCRectVectorAt(faces, i);
             CVCMat roiGray = CVCMatRoi(gray, roiRect);
             CVCMat roiSrc = CVCMatRoi(frame, roiRect);
-            CVCPoint point1 = {roiRect.x, roiRect.y};
-            CVCPoint point2 = {roiRect.x + roiRect.width, roiRect.y + roiRect.height};
+            CVCPoint point1 = {CVCRectX(roiRect), CVCRectY(roiRect)};
+            CVCPoint point2 = {CVCRectX(roiRect) + CVCRectWidth(roiRect), CVCRectY(roiRect) + CVCRectWidth(roiRect)};
             CVCrectangle(frame, point1, point2, (CVCScalar){255, 0, 0, 255}, 1, CVC_LINE_8, 0);
-            
+            CVCRectFree(roiRect);
+
             // detect eyes in face ROI
             CVCCascadeClassifierDetectMultiScale(eyeCascade, roiGray, eyes, 1.1, 3, 0, size, size);
             for (size_t j = 0; j < CVCRectVectorSize(eyes); ++j) {
                CVCRect roiRect = CVCRectVectorAt(eyes, j);
-               CVCPoint point1 = {roiRect.x, roiRect.y};
-               CVCPoint point2 = {roiRect.x + roiRect.width, roiRect.y + roiRect.height};
+               CVCPoint point1 = {CVCRectX(roiRect), CVCRectY(roiRect)};
+               CVCPoint point2 = {CVCRectX(roiRect) + CVCRectWidth(roiRect), CVCRectY(roiRect) + CVCRectWidth(roiRect)};
                CVCrectangle(roiSrc, point1, point2, (CVCScalar){0, 0, 255, 255}, 1, CVC_LINE_8, 0);
+               CVCRectFree(roiRect);
             }
             CVCMatFree(roiGray);
             CVCMatFree(roiSrc);

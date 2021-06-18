@@ -23,12 +23,20 @@
    #endif // __cplusplus
 #endif // _WIN32
 
-typedef void*	CVCMat;
-
 // Rect
-typedef struct CVCRect {
-   int x, y, width, height;
-} CVCRect;
+typedef void* CVCRect;
+
+CVC_EXPORT CVCRect CVCRectCreate(int width, int height);
+CVC_EXPORT void CVCRectFree(CVCRect size);
+CVC_EXPORT int CVCRectX(CVCRect size);
+CVC_EXPORT int CVCRectY(CVCRect size);
+CVC_EXPORT int CVCRectWidth(CVCRect size);
+CVC_EXPORT int CVCRectHeight(CVCRect size);
+CVC_EXPORT int CVCRectArea(CVCRect size);
+CVC_EXPORT bool CVCRectEmpty(CVCRect size);
+
+// Mat
+typedef void*	CVCMat;
 
 CVC_EXPORT CVCMat CVCMatCreate(void);
 CVC_EXPORT void CVCMatFree(CVCMat mat);
@@ -106,7 +114,7 @@ CVC_EXPORT CVCUCharVector CVCUCharVectorCreate(void);
 CVC_EXPORT void CVCUCharVectorFree(CVCUCharVector ucharVector);
 CVC_EXPORT size_t CVCUCharVectorSize(CVCUCharVector ucharVector);
 CVC_EXPORT unsigned char CVCUCharVectorAt(CVCUCharVector ucharVector, size_t index);
-CVC_EXPORT void CVCUCharPushBack(CVCUCharVector ucharVector, unsigned char c);
+CVC_EXPORT void CVCUCharVectorPushBack(CVCUCharVector ucharVector, unsigned char c);
 CVC_EXPORT unsigned char * CVCUCharVectorData(CVCUCharVector ucharVector);
 
 // TermCriteria
