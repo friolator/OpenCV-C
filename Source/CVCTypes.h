@@ -26,7 +26,7 @@
 // Rect
 typedef void* CVCRect;
 
-CVC_EXPORT CVCRect CVCRectCreate(int width, int height);
+CVC_EXPORT CVCRect CVCRectCreate(int x, int y, int width, int height);
 CVC_EXPORT void CVCRectFree(CVCRect size);
 CVC_EXPORT int CVCRectX(CVCRect size);
 CVC_EXPORT int CVCRectY(CVCRect size);
