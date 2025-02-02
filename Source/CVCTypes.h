@@ -44,6 +44,24 @@ CVC_EXPORT int CVCMatHeight(CVCMat mat);
 CVC_EXPORT int CVCMatWidth(CVCMat mat);
 CVC_EXPORT CVCMat CVCMatRoi(CVCMat mat, CVCRect rect);
 
+// InputArray
+typedef void* CVCInputArray;
+
+CVC_EXPORT CVCInputArray CVCInputArrayCreate(void);
+CVC_EXPORT void CVCInputArrayFree(CVCInputArray array);
+
+// OutputArray
+typedef void* CVCOutputArray;
+
+CVC_EXPORT CVCOutputArray CVCOutputArrayCreate(void);
+CVC_EXPORT void CVCOutputArrayFree(CVCOutputArray array);
+
+// InputOutputArray
+typedef void* CVCInputOutputArray;
+
+CVC_EXPORT CVCInputOutputArray CVCInputOutputArrayCreate(void);
+CVC_EXPORT void CVCInputOutputArrayFree(CVCInputOutputArray array);
+
 // Vector of Mat
 typedef void* CVCMatVector;
 

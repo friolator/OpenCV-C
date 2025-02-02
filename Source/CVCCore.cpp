@@ -157,33 +157,34 @@ void CVCreduce(CVCMat src, CVCMat dst, int dim, int rtype, int dtype)
 	cv::reduce(CVCMatRef(src), CVCMatRef(dst), dim, rtype, dtype);
 }
 
-void CVCmerge(const CVCMat mv, size_t count, CVCMat dst)
+void CVCmerge1(const CVCMat mv, size_t count, CVCMat dst)
 {
 	cv::merge(ConstCVCMatPtr(mv), count, CVCMatRef(dst));
 }
-/*
-void CVCmerge(InputArrayOfArrays mv, CVCMat dst)
+void CVCmerge2(CVCInputArray array, CVCMat dst)
 {
+	cv::merge(CVCInputArrayRef(array), CVCMatRef(dst));
 }
-*/
-void CVCsplit(const CVCMat src, CVCMat mvbegin)
+void CVCsplit1(const CVCMat src, CVCMat mvbegin)
 {
 	cv::split(ConstCVCMatRef(src), CVCMatRef(mvbegin));
 }
-/*
-void CVCsplit(CVCMat m, OutputArrayOfArrays mv)
+
+void CVCsplit2(CVCMat m, CVCOutputArray mv)
 {
+	cv::split(CVCMatRef(m), CVCOutputArrayRef(mv));
 }
-*/
-void CVCmixChannels(const CVCMat src, size_t nsrcs, CVCMat dst, size_t ndsts, const int* fromTo, size_t npairs)
+
+void CVCmixChannels1(const CVCMat src, size_t nsrcs, CVCMat dst, size_t ndsts, const int* fromTo, size_t npairs)
 {
 	cv::mixChannels(ConstCVCMatPtr(src), nsrcs, CVCMatPtr(dst), ndsts, fromTo, npairs);
 }
-/*
-void CVCmixChannels(InputArrayOfArrays src, InputOutputArrayOfArrays dst, const int* fromTo, size_t npairs)
-{
-}
 
+void CVCmixChannels2(CVCInputArray src, CVCInputOutputArray dst, const int* fromTo, size_t npairs)
+{
+	cv::mixChannels(CVCInputArrayRef(src), ConstCVCInputOutputArrayRef(dst), fromTo, npairs);
+}
+/*
 void CVCmixChannels(InputArrayOfArrays src, InputOutputArrayOfArrays dst, const std::vector<int>& fromTo)
 {
 }
@@ -192,11 +193,11 @@ void CVCextractChannel(CVCMat src, CVCMat dst, int coi)
 {
 	cv::extractChannel(CVCMatRef(src), CVCMatRef(dst), coi);
 }
-/*
-void CVCinsertChannel(CVCMat src, InputOutputArray dst, int coi)
+
+void CVCinsertChannel(CVCMat src, CVCInputOutputArray dst, int coi)
 {
+	cv::insertChannel(CVCMatRef(src), CVCInputOutputArrayRef(dst), coi);
 }
-*/
 void CVCflip(CVCMat src, CVCMat dst, int flipCode)
 {
 	cv::flip(CVCMatRef(src), CVCMatRef(dst), flipCode);
@@ -215,31 +216,38 @@ void CVCrepeat(CVCMat src, int ny, int nx, CVCMat dst)
 CVCMat CVCrepeat(const CVCMat src, int ny, int nx)
 {
 }
-
-void CVChconcat(const CVCMat src, size_t nsrc, CVCMat dst)
-{
-}
-
-void CVChconcat(CVCMat src1, CVCMat src2, CVCMat dst)
-{
-}
-
-void CVChconcat(InputArrayOfArrays src, CVCMat dst)
-{
-}
-
-void CVCvconcat(const CVCMat src, size_t nsrc, CVCMat dst)
-{
-}
-
-void CVCvconcat(CVCMat src1, CVCMat src2, CVCMat dst)
-{
-}
-
-void CVCvconcat(InputArrayOfArrays src, CVCMat dst)
-{
-}
 */
+
+
+void CVChconcat1(const CVCMat src, size_t nsrc, CVCMat dst)
+{
+	cv::hconcat(ConstCVCMatRef(src), nsrc, CVCMatRef(dst));
+}
+
+void CVChconcat2(CVCMat src1, CVCMat src2, CVCMat dst)
+{
+	cv::hconcat(CVCMatRef(src1), CVCMatRef(src2), CVCMatRef(dst));
+}
+
+void CVChconcat3(CVCInputArray src, CVCMat dst)
+{
+	cv::hconcat(CVCInputArrayRef(src), CVCMatRef(dst));
+}
+
+void CVCvconcat1(const CVCMat src, size_t nsrc, CVCMat dst)
+{
+	cv::vconcat(ConstCVCMatRef(src), nsrc, CVCMatRef(dst));
+}
+
+void CVCvconcat2(CVCMat src1, CVCMat src2, CVCMat dst)
+{
+	cv::vconcat(CVCMatRef(src1), CVCMatRef(src2), CVCMatRef(dst));
+}
+
+void CVCvconcat3(CVCInputArray src, CVCMat dst)
+{
+	cv::vconcat(CVCInputArrayRef(src), CVCMatRef(dst));
+}
 void CVCbitwise_and(CVCMat src1, CVCMat src2, CVCMat dst, CVCMat mask)
 {
 	if (mask == NULL) mask = (CVCMat)&cv::noArray();

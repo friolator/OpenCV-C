@@ -14,6 +14,21 @@
 #define ConstCVCMatPtr(value)	((const cv::Mat*)value)
 #define ConstCVCMatRef(value)	(*(const cv::Mat*)value)
 
+#define CVCInputArrayPtr(value)		((cv::_InputArray*)value)
+#define CVCInputArrayRef(value)		(*(cv::_InputArray*)value)
+#define ConstCVCInputArrayPtr(value)	((const cv::_InputArray*)value)
+#define ConstCVCInputArrayRef(value)	(*(const cv::_InputArray*)value)
+
+#define CVCOutputArrayPtr(value)		((cv::_OutputArray*)value)
+#define CVCOutputArrayRef(value)		(*(cv::_OutputArray*)value)
+#define ConstCVCOutputArrayPtr(value)	((const cv::_OutputArray*)value)
+#define ConstCVCOutputArrayRef(value)	(*(const cv::_OutputArray*)value)
+
+#define CVCInputOutputArrayPtr(value)		((cv::_InputOutputArray*)value)
+#define CVCInputOutputArrayRef(value)		(*(cv::_InputOutputArray*)value)
+#define ConstCVCInputOutputArrayPtr(value)	((const cv::_InputOutputArray*)value)
+#define ConstCVCInputOutputArrayRef(value)	(*(const cv::_InputOutputArray*)value)
+
 #define CVCMatVectorPtr(value)      ((std::vector<cv::Mat>*)value)
 #define CVCMatVectorRef(value)      (*(std::vector<cv::Mat>*)value)
 #define ConstCVCMatVectorPtr(value)   ((const std::vector<cv::Mat>*)value)

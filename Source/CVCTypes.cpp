@@ -98,6 +98,69 @@ CVCMat CVCMatRoi(CVCMat mat, CVCRect rect)
    return (CVCMat)roi;
 }
 
+// InputArray
+CVCInputArray CVCInputArrayCreate(void)
+{
+    try {
+        cv::_InputArray* mat = new cv::_InputArray();
+        return (CVCInputArray)mat;
+    }
+    catch (...) {}
+
+    return NULL;
+}
+
+void CVCInputArrayFree(CVCInputArray mat)
+{
+    // safety check
+    if (mat == NULL) {
+        return;
+    }
+    delete (cv::_InputArray*)mat;
+}
+
+// OutputArray
+CVCOutputArray CVCOutputArrayCreate(void)
+{
+    try {
+        cv::_OutputArray* mat = new cv::_OutputArray();
+        return (CVCOutputArray)mat;
+    }
+    catch (...) {}
+
+    return NULL;
+}
+
+void CVCOutputArrayFree(CVCOutputArray mat)
+{
+    // safety check
+    if (mat == NULL) {
+        return;
+    }
+    delete (cv::_OutputArray*)mat;
+}
+
+// InputOutputArray
+CVCInputOutputArray CVCInputOutputArrayCreate(void)
+{
+    try {
+        cv::_InputOutputArray* mat = new cv::_InputOutputArray();
+        return (CVCInputOutputArray)mat;
+    }
+    catch (...) {}
+
+    return NULL;
+}
+
+void CVCInputOutputArrayFree(CVCInputOutputArray mat)
+{
+    // safety check
+    if (mat == NULL) {
+        return;
+    }
+    delete (cv::_InputOutputArray*)mat;
+}
+
 // Vector of Mat
 CVCMatVector CVCMatVectorCreate(void)
 {
