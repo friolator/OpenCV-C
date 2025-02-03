@@ -39,6 +39,8 @@ CVC_EXPORT bool CVCRectEmpty(CVCRect size);
 typedef void*	CVCMat;
 
 CVC_EXPORT CVCMat CVCMatCreate(void);
+CVC_EXPORT CVCMat CVCMatCreate1(int rows, int cols, int type);
+CVC_EXPORT CVCMat CVCMatCreate2(int rows, int cols, int type, void* data);
 CVC_EXPORT void CVCMatFree(CVCMat mat);
 CVC_EXPORT int CVCMatHeight(CVCMat mat);
 CVC_EXPORT int CVCMatWidth(CVCMat mat);

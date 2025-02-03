@@ -72,6 +72,29 @@ CVCMat CVCMatCreate(void)
 	return NULL;
 }
 
+CVCMat CVCMatCreate1(int rows, int cols, int type)
+{
+    try {
+        cv::Mat* mat = new cv::Mat(rows, cols, type);
+        return (CVCMat)mat;
+    }
+    catch (...) {}
+
+    return NULL;
+}
+
+
+CVCMat CVCMatCreate2(int rows, int cols, int type, void* data)
+{
+    try {
+        cv::Mat* mat = new cv::Mat(rows, cols, type, data);
+        return (CVCMat)mat;
+    }
+    catch (...) {}
+
+    return NULL;
+}
+
 void CVCMatFree(CVCMat mat)
 {
 	// safety check
