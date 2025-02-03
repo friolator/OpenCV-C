@@ -235,7 +235,7 @@ CVC_EXPORT void CVCmagnitude(CVCMat x, CVCMat y, CVCMat magnitude);
 //CVC_EXPORT bool CVCcheckRange(CVCMat a, bool quiet, Point* pos, double minVal, double maxVal);
 
 /** @brief converts NaNs to the given number */
-//CVC_EXPORT void CVCpatchNaNs(InputOutputArray a, double val);
+CVC_EXPORT void CVCpatchNaNs(CVCInputOutputArray a, double val);
 
 /** @brief Performs generalized matrix multiplication. */
 CVC_EXPORT void CVCgemm(CVCMat src1, CVCMat src2, double alpha, CVCMat src3, double beta, CVCMat dst, int flags);
@@ -253,7 +253,7 @@ CVC_EXPORT void CVCtransform(CVCMat src, CVCMat dst, CVCMat m);
 CVC_EXPORT void CVCperspectiveTransform(CVCMat src, CVCMat dst, CVCMat m);
 
 /** @brief Copies the lower or the upper half of a square matrix to its another half. */
-//CVC_EXPORT void CVCcompleteSymm(InputOutputArray m, bool lowerToUpper);
+CVC_EXPORT void CVCcompleteSymm(CVCInputOutputArray m, bool lowerToUpper);
 
 /** @brief Initializes a scaled identity matrix. */
 //CVC_EXPORT void CVCsetIdentity(InputOutputArray mtx, const Scalar& s);
@@ -291,15 +291,15 @@ CVC_EXPORT void CVCeigenNonSymmetric(CVCMat src, CVCMat eigenvalues, CVCMat eige
 /** @brief Calculates the covariance matrix of a set of vectors. */
 CVC_EXPORT void CVCcalcCovarMatrix(const CVCMat samples, int nsamples, CVCMat covar, CVCMat mean, int flags, int ctype);
 
-//CVC_EXPORT void CVCcalcCovarMatrix(CVCMat samples, CVCMat covar, InputOutputArray mean, int flags, int ctype);
+CVC_EXPORT void CVCcalcCovarMatrix2(CVCMat samples, CVCMat covar, CVCInputOutputArray mean, int flags, int ctype);
 
-//CVC_EXPORT void CVCPCACompute(CVCMat data, InputOutputArray mean, CVCMat eigenvectors, int maxComponents);
+CVC_EXPORT void CVCPCACompute1(CVCMat data, CVCInputOutputArray mean, CVCMat eigenvectors, int maxComponents);
 
-//CVC_EXPORT void CVCPCACompute2(CVCMat data, InputOutputArray mean, CVCMat eigenvectors, CVCMat eigenvalues, int maxComponents);
+CVC_EXPORT void CVCPCACompute2(CVCMat data, CVCInputOutputArray mean, CVCMat eigenvectors, CVCMat eigenvalues, int maxComponents);
 
-//CVC_EXPORT void CVCPCACompute(CVCMat data, InputOutputArray mean, CVCMat eigenvectors, double retainedVariance);
+CVC_EXPORT void CVCPCACompute3(CVCMat data, CVCInputOutputArray mean, CVCMat eigenvectors, double retainedVariance);
 
-//CVC_EXPORT void CVCPCACompute2(CVCMat data, InputOutputArray mean, CVCMat eigenvectors, CVCMat eigenvalues, double retainedVariance);
+CVC_EXPORT void CVCPCACompute4(CVCMat data, CVCInputOutputArray mean, CVCMat eigenvectors, CVCMat eigenvalues, double retainedVariance);
 
 CVC_EXPORT void CVCPCAProject(CVCMat data, CVCMat mean, CVCMat eigenvectors, CVCMat result);
 

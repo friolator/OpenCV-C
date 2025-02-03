@@ -362,11 +362,12 @@ void CVCmagnitude(CVCMat x, CVCMat y, CVCMat magnitude)
 bool CVCcheckRange(CVCMat a, bool quiet, Point* pos, double minVal, double maxVal)
 {
 }
-
-void CVCpatchNaNs(InputOutputArray a, double val)
-{
-}
 */
+void CVCpatchNaNs(CVCInputOutputArray a, double val)
+{
+	cv::patchNaNs(CVCInputOutputArrayRef(a), val);
+}
+
 void CVCgemm(CVCMat src1, CVCMat src2, double alpha, CVCMat src3, double beta, CVCMat dst, int flags)
 {
 	cv::gemm(CVCMatRef(src1), CVCMatRef(src2), alpha, CVCMatRef(src3), beta, CVCMatRef(dst), flags);
@@ -392,11 +393,12 @@ void CVCperspectiveTransform(CVCMat src, CVCMat dst, CVCMat m)
 {
 	cv::perspectiveTransform(CVCMatRef(src), CVCMatRef(dst), CVCMatRef(m));
 }
-/*
-void CVCcompleteSymm(InputOutputArray m, bool lowerToUpper)
-{
-}
 
+void CVCcompleteSymm(CVCInputOutputArray m, bool lowerToUpper)
+{
+	cv::completeSymm(CVCInputOutputArrayRef(m), lowerToUpper);
+}
+/*
 void CVCsetIdentity(InputOutputArray mtx, const Scalar& s)
 {
 }
@@ -455,27 +457,31 @@ void CVCcalcCovarMatrix(const CVCMat samples, int nsamples, CVCMat covar, CVCMat
 {
 	cv::calcCovarMatrix(ConstCVCMatPtr(samples), nsamples, CVCMatRef(covar), CVCMatRef(mean), flags, ctype);
 }
-/*
-void CVCcalcCovarMatrix(CVCMat samples, CVCMat covar, InputOutputArray mean, int flags, int ctype)
+
+void CVCcalcCovarMatrix2(CVCMat samples, CVCMat covar, CVCInputOutputArray mean, int flags, int ctype)
 {
+	cv::calcCovarMatrix(CVCMatRef(samples), CVCMatRef(covar), CVCInputOutputArrayRef(mean), flags, ctype);
 }
 
-void CVCPCACompute(CVCMat data, InputOutputArray mean, CVCMat eigenvectors, int maxComponents)
+void CVCPCACompute1(CVCMat data, CVCInputOutputArray mean, CVCMat eigenvectors, int maxComponents)
 {
+	cv::PCACompute(CVCMatRef(data), CVCInputOutputArrayRef(mean), CVCMatRef(eigenvectors), maxComponents);
 }
 
-void CVCPCACompute2(CVCMat data, InputOutputArray mean, CVCMat eigenvectors, CVCMat eigenvalues, int maxComponents)
+void CVCPCACompute2(CVCMat data, CVCInputOutputArray mean, CVCMat eigenvectors, CVCMat eigenvalues, int maxComponents)
 {
+	cv::PCACompute(CVCMatRef(data), CVCInputOutputArrayRef(mean), CVCMatRef(eigenvectors), CVCMatRef(eigenvalues), maxComponents);
 }
 
-void CVCPCACompute(CVCMat data, InputOutputArray mean, CVCMat eigenvectors, double retainedVariance)
+void CVCPCACompute3(CVCMat data, CVCInputOutputArray mean, CVCMat eigenvectors, double retainedVariance)
 {
+	cv::PCACompute(CVCMatRef(data), CVCInputOutputArrayRef(mean), CVCMatRef(eigenvectors), retainedVariance);
 }
 
-void CVCPCACompute2(CVCMat data, InputOutputArray mean, CVCMat eigenvectors, CVCMat eigenvalues, double retainedVariance)
+void CVCPCACompute4(CVCMat data, CVCInputOutputArray mean, CVCMat eigenvectors, CVCMat eigenvalues, double retainedVariance)
 {
+	cv::PCACompute(CVCMatRef(data), CVCInputOutputArrayRef(mean), CVCMatRef(eigenvectors), CVCMatRef(eigenvalues), retainedVariance);
 }
-*/
 void CVCPCAProject(CVCMat data, CVCMat mean, CVCMat eigenvectors, CVCMat result)
 {
 	cv::PCAProject(CVCMatRef(data), CVCMatRef(mean), CVCMatRef(eigenvectors), CVCMatRef(result));
