@@ -125,8 +125,19 @@ CVCMat CVCMatRoi(CVCMat mat, CVCRect rect)
 CVCInputArray CVCInputArrayCreate(void)
 {
     try {
-        cv::_InputArray* mat = new cv::_InputArray();
-        return (CVCInputArray)mat;
+        cv::_InputArray* inputArray = new cv::_InputArray();
+        return (CVCInputArray)inputArray;
+    }
+    catch (...) {}
+
+    return NULL;
+}
+
+CVCInputArray CVCInputArrayCreateFromCVCMatVector(CVCMatVector matVector)
+{
+    try {
+        cv::_InputArray* inputArray = new cv::_InputArray(ConstCVCMatVectorRef(matVector));
+        return (CVCInputArray)inputArray;
     }
     catch (...) {}
 

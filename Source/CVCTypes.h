@@ -46,10 +46,20 @@ CVC_EXPORT int CVCMatHeight(CVCMat mat);
 CVC_EXPORT int CVCMatWidth(CVCMat mat);
 CVC_EXPORT CVCMat CVCMatRoi(CVCMat mat, CVCRect rect);
 
+// Vector of Mat
+typedef void* CVCMatVector;
+
+CVC_EXPORT CVCMatVector CVCMatVectorCreate(void);
+CVC_EXPORT void CVCMatVectorFree(CVCMatVector matVector);
+CVC_EXPORT size_t CVCMatVectorSize(CVCMatVector matVector);
+CVC_EXPORT CVCMat CVCMatVectorAt(CVCMatVector matVector, size_t index);
+CVC_EXPORT void CVCMatVectorPushBack(CVCMatVector matVector, CVCMat mat);
+
 // InputArray
 typedef void* CVCInputArray;
 
 CVC_EXPORT CVCInputArray CVCInputArrayCreate(void);
+CVC_EXPORT CVCInputArray CVCInputArrayCreateFromCVCMatVector(CVCMatVector mat);
 CVC_EXPORT void CVCInputArrayFree(CVCInputArray array);
 
 // OutputArray
@@ -63,15 +73,6 @@ typedef void* CVCInputOutputArray;
 
 CVC_EXPORT CVCInputOutputArray CVCInputOutputArrayCreate(void);
 CVC_EXPORT void CVCInputOutputArrayFree(CVCInputOutputArray array);
-
-// Vector of Mat
-typedef void* CVCMatVector;
-
-CVC_EXPORT CVCMatVector CVCMatVectorCreate(void);
-CVC_EXPORT void CVCMatVectorFree(CVCMatVector matVector);
-CVC_EXPORT size_t CVCMatVectorSize(CVCMatVector matVector);
-CVC_EXPORT CVCMat CVCMatVectorAt(CVCMatVector matVector, size_t index);
-CVC_EXPORT void CVCMatVectorPushBack(CVCMatVector matVector, CVCMat mat);
 
 // Point
 typedef struct CVCPoint {
