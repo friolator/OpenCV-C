@@ -221,7 +221,7 @@ CVCMat CVCrepeat(const CVCMat src, int ny, int nx)
 
 void CVChconcat1(const CVCMat src, size_t nsrc, CVCMat dst)
 {
-	cv::hconcat(ConstCVCMatRef(src), nsrc, CVCMatRef(dst));
+	cv::hconcat(ConstCVCMatPtr(src), nsrc, CVCMatRef(dst));
 }
 
 void CVChconcat2(CVCMat src1, CVCMat src2, CVCMat dst)
@@ -236,7 +236,7 @@ void CVChconcat3(CVCInputArray src, CVCMat dst)
 
 void CVCvconcat1(const CVCMat src, size_t nsrc, CVCMat dst)
 {
-	cv::vconcat(ConstCVCMatRef(src), nsrc, CVCMatRef(dst));
+	cv::vconcat(ConstCVCMatPtr(src), nsrc, CVCMatRef(dst));
 }
 
 void CVCvconcat2(CVCMat src1, CVCMat src2, CVCMat dst)
