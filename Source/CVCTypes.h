@@ -55,11 +55,17 @@ CVC_EXPORT size_t CVCMatVectorSize(CVCMatVector matVector);
 CVC_EXPORT CVCMat CVCMatVectorAt(CVCMatVector matVector, size_t index);
 CVC_EXPORT void CVCMatVectorPushBack(CVCMatVector matVector, CVCMat mat);
 
+typedef void* CVCMatRefVector;
+
+CVC_EXPORT CVCMatRefVector CVCMatRefVectorCreate(void);
+CVC_EXPORT void CVCMatRefVectorFree(CVCMatRefVector matVector);
+CVC_EXPORT void CVCMatRefVectorPushBack(CVCMatRefVector matVector, CVCMat mat);
+
 // InputArray
 typedef void* CVCInputArray;
 
 CVC_EXPORT CVCInputArray CVCInputArrayCreate(void);
-CVC_EXPORT CVCInputArray CVCInputArrayCreateFromCVCMatVector(CVCMatVector mat);
+CVC_EXPORT CVCInputArray CVCInputArrayCreateFromCVCMatRefVector(CVCMatRefVector mat);
 CVC_EXPORT void CVCInputArrayFree(CVCInputArray array);
 
 // OutputArray

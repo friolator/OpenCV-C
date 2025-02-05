@@ -133,10 +133,10 @@ CVCInputArray CVCInputArrayCreate(void)
     return NULL;
 }
 
-CVCInputArray CVCInputArrayCreateFromCVCMatVector(CVCMatVector matVector)
+CVCInputArray CVCInputArrayCreateFromCVCMatRefVector(CVCMatRefVector matRefVector)
 {
     try {
-        cv::_InputArray* inputArray = new cv::_InputArray(ConstCVCMatVectorRef(matVector));
+        cv::_InputArray* inputArray = new cv::_InputArray(CVCMatVectorRef(matRefVector));
         return (CVCInputArray)inputArray;
     }
     catch (...) {}
@@ -229,6 +229,32 @@ CVCMat CVCMatVectorAt(CVCMatVector matVector, size_t index)
 void CVCMatVectorPushBack(CVCMatVector matVector, CVCMat mat)
 {
    (*(std::vector<cv::Mat*>*)matVector).push_back(CVCMatPtr(mat));
+}
+
+CVCMatRefVector CVCMatRefVectorCreate(void)
+{
+    try {
+        std::vector<cv::Mat>* matVector = new std::vector<cv::Mat>();
+        return (CVCMatRefVector)matVector;
+    }
+    catch (...) {}
+
+    return NULL;
+}
+
+void CVCMatRefVectorFree(CVCMatRefVector matVector)
+{
+    // safety check
+    if (matVector == NULL) {
+        return;
+    }
+
+    delete (std::vector<cv::Mat>*)matVector;
+}
+
+void CVCMatRefVectorPushBack(CVCMatRefVector matVector, CVCMat mat)
+{
+    (*(std::vector<cv::Mat>*)matVector).push_back(CVCMatRef(mat));
 }
 
 // Vector of Rect

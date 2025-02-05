@@ -134,4 +134,28 @@ enum CVCBorderTypes {
 	CVC_BORDER_ISOLATED = 16
 };
 
+#define CVC_CN_MAX     512
+#define CVC_CN_SHIFT   3
+#define CVC_DEPTH_MAX  (1 << CVC_CN_SHIFT)
+
+#define CVC_8U   0
+#define CVC_8S   1
+#define CVC_16U  2
+#define CVC_16S  3
+#define CVC_32S  4
+#define CVC_32F  5
+#define CVC_64F  6
+#define CVC_16F  7
+
+#define CVC_MAT_DEPTH_MASK       (CVC_DEPTH_MAX - 1)
+#define CVC_MAT_DEPTH(flags)     ((flags) & CVC_MAT_DEPTH_MASK)
+
+#define CVC_MAKETYPE(depth,cn) (CVC_MAT_DEPTH(depth) + (((cn)-1) << CVC_CN_SHIFT))
+#define CVC_MAKE_TYPE CVC_MAKETYPE
+
+#define CVC_8UC1 CVC_MAKETYPE(CVC_8U,1)
+#define CVC_8UC2 CVC_MAKETYPE(CVC_8U,2)
+#define CVC_8UC3 CVC_MAKETYPE(CVC_8U,3)
+#define CVC_8UC4 CVC_MAKETYPE(CVC_8U,4)
+#define CVC_8UC(n) CVC_MAKETYPE(CVC_8U,(n))
 #endif /* CVCBASE_H */
