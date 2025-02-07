@@ -245,7 +245,7 @@ void demoMerge(void) {
 	// Fill the data arrays with values
 	for (int i = 0; i < width * height; i++) {
 		bData[i] = 0;     // Blue channel (all zeros)
-		gData[i] = 255;   // Green channel (mid intensity)
+		gData[i] = 128;   // Green channel (mid intensity)
 		rData[i] = 255;   // Red channel (all white)
 	}
 
@@ -275,5 +275,5 @@ void demoMerge(void) {
 	CVCMatVectorFree(channels);
 	CVCMatFree(rChannel);
 	CVCMatFree(gChannel);
-	CVCMatFree(rChannel);
+	CVCMatFree(bChannel);
 }
