@@ -29,8 +29,13 @@ int CVCwaitKey(int delay)
 
 CVCVideoCapture CVCVideoCaptureCreate(void)
 {
+	return CVCVideoCaptureCreateWithIndex(0);
+}
+
+CVCVideoCapture CVCVideoCaptureCreateWithIndex(int index)
+{
 	try {
-		cv::VideoCapture* videoCapture = new cv::VideoCapture(0);
+		cv::VideoCapture* videoCapture = new cv::VideoCapture(index);
 		return (CVCVideoCapture)videoCapture;
 	}
 	catch (...) {}
