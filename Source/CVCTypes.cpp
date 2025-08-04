@@ -121,6 +121,21 @@ CVCMat CVCMatRoi(CVCMat mat, CVCRect rect)
    return (CVCMat)roi;
 }
 
+int CVCMatType(CVCMat mat)
+{
+	return ConstCVCMatRef(mat).type();
+}
+
+int CVCMatDepth(CVCMat mat)
+{
+	return ConstCVCMatRef(mat).depth();
+}
+
+const void* CVCMatDataPtr(CVCMat mat)
+{
+	return ConstCVCMatRef(mat).ptr<uint8_t>(0);
+}
+
 // InputArray
 CVCInputArray CVCInputArrayCreate(void)
 {

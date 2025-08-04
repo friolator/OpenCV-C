@@ -45,6 +45,9 @@ CVC_EXPORT void CVCMatFree(CVCMat mat);
 CVC_EXPORT int CVCMatHeight(CVCMat mat);
 CVC_EXPORT int CVCMatWidth(CVCMat mat);
 CVC_EXPORT CVCMat CVCMatRoi(CVCMat mat, CVCRect rect);
+CVC_EXPORT int CVCMatType(CVCMat mat);
+CVC_EXPORT int CVCMatDepth(CVCMat mat);
+CVC_EXPORT const void* CVCMatDataPtr(CVCMat mat);
 
 // Vector of Mat
 typedef void* CVCMatVector;
