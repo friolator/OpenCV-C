@@ -43,6 +43,17 @@ CVCVideoCapture CVCVideoCaptureCreateWithIndex(int index)
 	return NULL;
 }
 
+CVCVideoCapture CVCVideoCaptureCreateWithIndexApi(int index, int api)
+{
+	try {
+		cv::VideoCapture* videoCapture = new cv::VideoCapture(index, api);
+		return (CVCVideoCapture)videoCapture;
+	}
+	catch (...) {}
+
+	return NULL;
+}
+
 void CVCVideoCaptureFree(CVCVideoCapture videoCapture) {
 	// safety check
 	if (videoCapture == NULL) {
@@ -60,4 +71,14 @@ bool CVCVideoCaptureIsOpened(CVCVideoCapture videoCapture)
 bool CVCVideoCaptureRead(CVCVideoCapture videoCapture, CVCMat image)
 {
 	return ((cv::VideoCapture*)videoCapture)->read(CVCMatRef(image));
+}
+
+double CVCVideoCaptureGet(CVCVideoCapture videoCapture, int propId)
+{
+	return ((cv::VideoCapture*)videoCapture)->get(propId);
+}
+
+bool CVCVideoCaptureSet(CVCVideoCapture videoCapture, int propId, double value)
+{
+	return ((cv::VideoCapture*)videoCapture)->set(propId, value);
 }

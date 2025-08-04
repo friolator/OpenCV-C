@@ -30,8 +30,11 @@ CVC_EXPORT int CVCwaitKey(int delay);
 typedef void* CVCVideoCapture;
 CVC_EXPORT CVCVideoCapture CVCVideoCaptureCreate(void);
 CVC_EXPORT CVCVideoCapture CVCVideoCaptureCreateWithIndex(int index);
+CVC_EXPORT CVCVideoCapture CVCVideoCaptureCreateWithIndexApi(int index, int api);
 CVC_EXPORT void CVCVideoCaptureFree(CVCVideoCapture videoCapture);
 CVC_EXPORT bool CVCVideoCaptureIsOpened(CVCVideoCapture videoCapture);
 CVC_EXPORT bool CVCVideoCaptureRead(CVCVideoCapture videoCapture, CVCMat image);
+CVC_EXPORT double CVCVideoCaptureGet(CVCVideoCapture videoCapture, int propId);
+CVC_EXPORT bool CVCVideoCaptureSet(CVCVideoCapture videoCapture, int propId, double value);
 
 #endif /* OPENCVC_H */
