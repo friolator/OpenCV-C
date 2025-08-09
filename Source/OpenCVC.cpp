@@ -82,3 +82,13 @@ bool CVCVideoCaptureSet(CVCVideoCapture videoCapture, int propId, double value)
 {
 	return ((cv::VideoCapture*)videoCapture)->set(propId, value);
 }
+
+CVC_EXPORT bool CVCVideoCaptureGrab(CVCVideoCapture videoCapture)
+{
+	return ((cv::VideoCapture*)videoCapture)->grab();
+}
+
+CVC_EXPORT bool CVCVideoCaptureRetrieve(CVCVideoCapture videoCapture, CVCMat image, int flag)
+{
+	return ((cv::VideoCapture*)videoCapture)->retrieve(CVCMatRef(image), flag);
+}

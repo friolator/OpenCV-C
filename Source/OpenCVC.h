@@ -36,5 +36,7 @@ CVC_EXPORT bool CVCVideoCaptureIsOpened(CVCVideoCapture videoCapture);
 CVC_EXPORT bool CVCVideoCaptureRead(CVCVideoCapture videoCapture, CVCMat image);
 CVC_EXPORT double CVCVideoCaptureGet(CVCVideoCapture videoCapture, int propId);
 CVC_EXPORT bool CVCVideoCaptureSet(CVCVideoCapture videoCapture, int propId, double value);
+CVC_EXPORT bool CVCVideoCaptureGrab(CVCVideoCapture videoCapture);
+CVC_EXPORT bool CVCVideoCaptureRetrieve(CVCVideoCapture videoCapture, CVCMat image, int flag);
 
 #endif /* OPENCVC_H */
