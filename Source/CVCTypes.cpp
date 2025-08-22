@@ -83,11 +83,21 @@ CVCMat CVCMatCreate1(int rows, int cols, int type)
     return NULL;
 }
 
-
 CVCMat CVCMatCreate2(int rows, int cols, int type, void* data)
 {
     try {
         cv::Mat* mat = new cv::Mat(rows, cols, type, data);
+        return (CVCMat)mat;
+    }
+    catch (...) {}
+
+    return NULL;
+}
+
+CVCMat CVCMatCreate3(int rows, int cols, int type, void* data, int rowBytes)
+{
+    try {
+        cv::Mat* mat = new cv::Mat(rows, cols, type, data, rowBytes);
         return (CVCMat)mat;
     }
     catch (...) {}
