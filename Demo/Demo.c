@@ -98,10 +98,17 @@ int main(int argc, const char* argv[])
 	return 0;
 }
 
-void demoObjectDetect()
+void demoObjectDetect(void)
 {
-	CVCVideoCapture videoStream = CVCVideoCaptureCreate();
-
+	CVCVideoCapture videoStream = NULL;
+	
+	for (int i = 0; i < 10; ++i) {
+		CVCVideoCapture vs = CVCVideoCaptureCreateWithIndex(i);
+		if (CVCVideoCaptureIsOpened(vs)) {
+			videoStream = vs;
+			break;
+		}
+	}
 	if (!CVCVideoCaptureIsOpened(videoStream))
 	{
 		printf("Error: Cannot open video stream from camera\n");
