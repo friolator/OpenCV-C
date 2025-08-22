@@ -65,7 +65,7 @@ void CVCVideoCaptureFree(CVCVideoCapture videoCapture) {
 
 bool CVCVideoCaptureIsOpened(CVCVideoCapture videoCapture)
 {
-	return ((cv::VideoCapture*)videoCapture)->isOpened();
+	return videoCapture != NULL && ((cv::VideoCapture*)videoCapture)->isOpened();
 }
 
 bool CVCVideoCaptureRead(CVCVideoCapture videoCapture, CVCMat image)
