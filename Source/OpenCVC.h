@@ -34,8 +34,14 @@ CVC_EXPORT CVCVideoCapture CVCVideoCaptureCreateWithIndexApi(int index, int api)
 CVC_EXPORT void CVCVideoCaptureFree(CVCVideoCapture videoCapture);
 CVC_EXPORT bool CVCVideoCaptureIsOpened(CVCVideoCapture videoCapture);
 CVC_EXPORT bool CVCVideoCaptureRead(CVCVideoCapture videoCapture, CVCMat image);
-CVC_EXPORT double CVCVideoCaptureGet(CVCVideoCapture videoCapture, int propId);
-CVC_EXPORT bool CVCVideoCaptureSet(CVCVideoCapture videoCapture, int propId, double value);
+CVC_EXPORT double CVCVideoCaptureGetDouble(CVCVideoCapture videoCapture, int propId);
+CVC_EXPORT float CVCVideoCaptureGetFloat(CVCVideoCapture videoCapture, int propId);
+CVC_EXPORT float64_t CVCVideoCaptureGetFloat64(CVCVideoCapture videoCapture, int propId);
+CVC_EXPORT int64_t CVCVideoCaptureGetInt(CVCVideoCapture videoCapture, int propId);
+CVC_EXPORT bool CVCVideoCaptureSetDouble(CVCVideoCapture videoCapture, int propId, double value);
+CVC_EXPORT bool CVCVideoCaptureSetFloat(CVCVideoCapture videoCapture, int propId, float value);
+CVC_EXPORT bool CVCVideoCaptureSetFloat64(CVCVideoCapture videoCapture, int propId, float64_t value);
+CVC_EXPORT bool CVCVideoCaptureSetInt(CVCVideoCapture videoCapture, int propId, int64_t value);
 CVC_EXPORT bool CVCVideoCaptureGrab(CVCVideoCapture videoCapture);
 CVC_EXPORT bool CVCVideoCaptureRetrieve(CVCVideoCapture videoCapture, CVCMat image, int flag);
 

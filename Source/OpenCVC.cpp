@@ -73,12 +73,42 @@ bool CVCVideoCaptureRead(CVCVideoCapture videoCapture, CVCMat image)
 	return ((cv::VideoCapture*)videoCapture)->read(CVCMatRef(image));
 }
 
-double CVCVideoCaptureGet(CVCVideoCapture videoCapture, int propId)
+double CVCVideoCaptureGetDouble(CVCVideoCapture videoCapture, int propId)
 {
 	return ((cv::VideoCapture*)videoCapture)->get(propId);
 }
 
-bool CVCVideoCaptureSet(CVCVideoCapture videoCapture, int propId, double value)
+bool CVCVideoCaptureSetDouble(CVCVideoCapture videoCapture, int propId, double value)
+{
+	return ((cv::VideoCapture*)videoCapture)->set(propId, value);
+}
+
+float64_t CVCVideoCaptureGetFloat64(CVCVideoCapture videoCapture, int propId)
+{
+	return ((cv::VideoCapture*)videoCapture)->get(propId);
+}
+
+bool CVCVideoCaptureSetFloat64(CVCVideoCapture videoCapture, int propId, float64_t value)
+{
+	return ((cv::VideoCapture*)videoCapture)->set(propId, value);
+}
+
+float CVCVideoCaptureGetFloat(CVCVideoCapture videoCapture, int propId)
+{
+	return ((cv::VideoCapture*)videoCapture)->get(propId);
+}
+
+bool CVCVideoCaptureSetFloat(CVCVideoCapture videoCapture, int propId, float value)
+{
+	return ((cv::VideoCapture*)videoCapture)->set(propId, value);
+}
+
+int64_t CVCVideoCaptureGetInt(CVCVideoCapture videoCapture, int propId)
+{
+	return ((cv::VideoCapture*)videoCapture)->get(propId);
+}
+
+bool CVCVideoCaptureSetInt(CVCVideoCapture videoCapture, int propId, int64_t value)
 {
 	return ((cv::VideoCapture*)videoCapture)->set(propId, value);
 }
